@@ -1,50 +1,26 @@
-using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.AI;
 
-public class Zombie : MonoBehaviour
+public class Zombie : AIPursuit
 {
-    private bool        _isActivePursuit;
-    private bool        _isPlayerInSight;
-    private AIPursuit   _ai;
-    private Transform   _targetPos;
-    private Vector3     _lastVisitPos;
-
-    public bool IsActivePursuit { get => _isActivePursuit; }
-
+    private Transform _target;
     void OnEnable()
     {
-        _isPlayerInSight = true;
-        _isActivePursuit = false;
-        _lastVisitPos = Vector3.zero;
-        _targetPos = GameObject.FindGameObjectWithTag("Player").transform;
-        _ai = new AIPursuit
-        {
-            Agent = GetComponent<NavMeshAgent>()
-        };
-    }
-    private void SetLastVisitPos()
-    {
-        if (_isPlayerInSight)
-            _lastVisitPos = _targetPos.position;
-        if (_ai.Agent.Raycast(_targetPos.position, out _))
-            _isPlayerInSight = false;
-    } 
-    private void StoppingOnTargetLoss()
-    {
-        if (_ai.Agent.isStopped
-            && !_isPlayerInSight)
-        {
-            _isActivePursuit = false;
-        }
+        agent = GetComponent<NavMeshAgent>();
+        agent.updateRotation = false;
+        agent.updateUpAxis = false;
+
+        IsActivePursuit = false;
+        lastVisitPos = transform.position;
+
+        _target = GameObject.FindGameObjectWithTag("Player").transform;
+        StartCoroutine(RandomStep());
     }
     void Update()
     {
-        if (_isActivePursuit)
+        if (IsActivePursuit)
         {
-            SetLastVisitPos();
-            _ai.Agent.SetDestination(_lastVisitPos);
+            agent.SetDestination(SetLastVisitPos(_target));
             StoppingOnTargetLoss();
         }
     }
@@ -53,8 +29,8 @@ public class Zombie : MonoBehaviour
     {
         if (collision.name == "Player")
         {
-            _isActivePursuit = true;
-            _isPlayerInSight = true;
+            IsActivePursuit = true;
+            IsPlayerInSight = true;
         }
     }
     void OnTriggerStay2D(Collider2D other)
@@ -64,7 +40,7 @@ public class Zombie : MonoBehaviour
             Zombie zombie = (Zombie)other.gameObject.GetComponent("Zombie");
             if (zombie.IsActivePursuit)
             {
-                _isActivePursuit = true;
+                IsActivePursuit = true;
             }
         }
     }
