@@ -5,6 +5,8 @@ using UnityEngine;
 public class Player : MonoBehaviour
 {
     private Rigidbody2D _rigidBody;
+    [Range(1f, 100f)]
+    public float health;
     public float speed;
     void Start()
     {
