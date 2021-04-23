@@ -1,0 +1,600 @@
+fileFormatVersion: 2
+guid: fce4f3617f6a4d846a5b6d8f3690c6f2
+TextureImporter:
+  internalIDToNameTable:
+  - first:
+      213: 707971497981377829
+    second: TDS-Monster-Character-Sprites9_0
+  - first:
+      213: 8831417427394371573
+    second: TDS-Monster-Character-Sprites9_1
+  - first:
+      213: 4032510334842680218
+    second: TDS-Monster-Character-Sprites9_2
+  - first:
+      213: -5427520854942352247
+    second: TDS-Monster-Character-Sprites9_3
+  - first:
+      213: -8873891969677440798
+    second: TDS-Monster-Character-Sprites9_4
+  - first:
+      213: 1404778957306663603
+    second: TDS-Monster-Character-Sprites9_5
+  - first:
+      213: 4542855824858432711
+    second: TDS-Monster-Character-Sprites9_6
+  - first:
+      213: -5302048234371948421
+    second: TDS-Monster-Character-Sprites9_7
+  - first:
+      213: 443206495925104418
+    second: TDS-Monster-Character-Sprites9_8
+  - first:
+      213: -2452222383034172134
+    second: TDS-Monster-Character-Sprites9_9
+  - first:
+      213: 6835056543623150666
+    second: TDS-Monster-Character-Sprites9_10
+  - first:
+      213: -228089218868739401
+    second: TDS-Monster-Character-Sprites9_11
+  - first:
+      213: 7300399711686068117
+    second: TDS-Monster-Character-Sprites9_12
+  - first:
+      213: -332759106552521162
+    second: TDS-Monster-Character-Sprites9_13
+  - first:
+      213: -8467780750948280701
+    second: TDS-Monster-Character-Sprites9_14
+  - first:
+      213: -9257189356316341
+    second: TDS-Monster-Character-Sprites9_15
+  - first:
+      213: -7811929736451717757
+    second: TDS-Monster-Character-Sprites9_16
+  - first:
+      213: -3752931140935062814
+    second: TDS-Monster-Character-Sprites9_17
+  - first:
+      213: 4447860629709658538
+    second: TDS-Monster-Character-Sprites9_18
+  - first:
+      213: -5444881934690538050
+    second: TDS-Monster-Character-Sprites9_19
+  externalObjects: {}
+  serializedVersion: 11
+  mipmaps:
+    mipMapMode: 0
+    enableMipMap: 0
+    sRGBTexture: 1
+    linearTexture: 0
+    fadeOut: 0
+    borderMipMap: 0
+    mipMapsPreserveCoverage: 0
+    alphaTestReferenceValue: 0.5
+    mipMapFadeDistanceStart: 1
+    mipMapFadeDistanceEnd: 3
+  bumpmap:
+    convertToNormalMap: 0
+    externalNormalMap: 0
+    heightScale: 0.25
+    normalMapFilter: 0
+  isReadable: 0
+  streamingMipmaps: 0
+  streamingMipmapsPriority: 0
+  vTOnly: 0
+  grayScaleToAlpha: 0
+  generateCubemap: 6
+  cubemapConvolution: 0
+  seamlessCubemap: 0
+  textureFormat: 1
+  maxTextureSize: 2048
+  textureSettings:
+    serializedVersion: 2
+    filterMode: -1
+    aniso: -1
+    mipBias: -100
+    wrapU: 1
+    wrapV: 1
+    wrapW: 1
+  nPOTScale: 0
+  lightmap: 0
+  compressionQuality: 50
+  spriteMode: 2
+  spriteExtrude: 1
+  spriteMeshType: 1
+  alignment: 0
+  spritePivot: {x: 0.5, y: 0.5}
+  spritePixelsToUnits: 150
+  spriteBorder: {x: 0, y: 0, z: 0, w: 0}
+  spriteGenerateFallbackPhysicsShape: 1
+  alphaUsage: 1
+  alphaIsTransparency: 1
+  spriteTessellationDetail: -1
+  textureType: 8
+  textureShape: 1
+  singleChannelComponent: 0
+  flipbookRows: 1
+  flipbookColumns: 1
+  maxTextureSizeSet: 0
+  compressionQualitySet: 0
+  textureFormatSet: 0
+  ignorePngGamma: 0
+  applyGammaDecoding: 0
+  platformSettings:
+  - serializedVersion: 3
+    buildTarget: DefaultTexturePlatform
+    maxTextureSize: 2048
+    resizeAlgorithm: 0
+    textureFormat: -1
+    textureCompression: 1
+    compressionQuality: 50
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    overridden: 0
+    androidETC2FallbackOverride: 0
+    forceMaximumCompressionQuality_BC6H_BC7: 0
+  - serializedVersion: 3
+    buildTarget: Standalone
+    maxTextureSize: 2048
+    resizeAlgorithm: 0
+    textureFormat: -1
+    textureCompression: 1
+    compressionQuality: 50
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    overridden: 0
+    androidETC2FallbackOverride: 0
+    forceMaximumCompressionQuality_BC6H_BC7: 0
+  - serializedVersion: 3
+    buildTarget: Android
+    maxTextureSize: 2048
+    resizeAlgorithm: 0
+    textureFormat: -1
+    textureCompression: 1
+    compressionQuality: 50
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    overridden: 0
+    androidETC2FallbackOverride: 0
+    forceMaximumCompressionQuality_BC6H_BC7: 0
+  spriteSheet:
+    serializedVersion: 2
+    sprites:
+    - serializedVersion: 2
+      name: TDS-Monster-Character-Sprites9_0
+      rect:
+        serializedVersion: 2
+        x: 0
+        y: 353.3333
+        width: 225
+        height: 176.66667
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 52df740935833d900800000000000000
+      internalID: 707971497981377829
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: TDS-Monster-Character-Sprites9_1
+      rect:
+        serializedVersion: 2
+        x: 225
+        y: 353.3333
+        width: 225
+        height: 176.66667
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 5ff190ffb5f7f8a70800000000000000
+      internalID: 8831417427394371573
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: TDS-Monster-Character-Sprites9_2
+      rect:
+        serializedVersion: 2
+        x: 450
+        y: 353.3333
+        width: 225
+        height: 176.66667
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: a93b36dc8ca56f730800000000000000
+      internalID: 4032510334842680218
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: TDS-Monster-Character-Sprites9_3
+      rect:
+        serializedVersion: 2
+        x: 675
+        y: 353.3333
+        width: 225
+        height: 176.66667
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 98cf226e9829da4b0800000000000000
+      internalID: -5427520854942352247
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: TDS-Monster-Character-Sprites9_4
+      rect:
+        serializedVersion: 2
+        x: 900
+        y: 353.3333
+        width: 225
+        height: 176.66667
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 2e84f2cf44a99d480800000000000000
+      internalID: -8873891969677440798
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: TDS-Monster-Character-Sprites9_5
+      rect:
+        serializedVersion: 2
+        x: 1125
+        y: 353.3333
+        width: 225
+        height: 176.66667
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 3b21532d407ce7310800000000000000
+      internalID: 1404778957306663603
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: TDS-Monster-Character-Sprites9_6
+      rect:
+        serializedVersion: 2
+        x: 1350
+        y: 353.3333
+        width: 225
+        height: 176.66667
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 7c4408abd477b0f30800000000000000
+      internalID: 4542855824858432711
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: TDS-Monster-Character-Sprites9_7
+      rect:
+        serializedVersion: 2
+        x: 1575
+        y: 353.3333
+        width: 225
+        height: 176.66667
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: b70e548e8375b66b0800000000000000
+      internalID: -5302048234371948421
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: TDS-Monster-Character-Sprites9_8
+      rect:
+        serializedVersion: 2
+        x: 0
+        y: 177.33333
+        width: 225
+        height: 176.66667
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 22fe2c7b5f5962600800000000000000
+      internalID: 443206495925104418
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: TDS-Monster-Character-Sprites9_9
+      rect:
+        serializedVersion: 2
+        x: 225
+        y: 177.33333
+        width: 225
+        height: 176.66667
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: a1d7cfc2cb4f7fdd0800000000000000
+      internalID: -2452222383034172134
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: TDS-Monster-Character-Sprites9_10
+      rect:
+        serializedVersion: 2
+        x: 450
+        y: 177.33333
+        width: 225
+        height: 176.66667
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: a4cfd5676bffade50800000000000000
+      internalID: 6835056543623150666
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: TDS-Monster-Character-Sprites9_11
+      rect:
+        serializedVersion: 2
+        x: 675
+        y: 177.33333
+        width: 225
+        height: 176.66667
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 7b28b3c501aa5dcf0800000000000000
+      internalID: -228089218868739401
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: TDS-Monster-Character-Sprites9_12
+      rect:
+        serializedVersion: 2
+        x: 900
+        y: 177.33333
+        width: 225
+        height: 176.66667
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 597896dcbda305560800000000000000
+      internalID: 7300399711686068117
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: TDS-Monster-Character-Sprites9_13
+      rect:
+        serializedVersion: 2
+        x: 1125
+        y: 177.33333
+        width: 225
+        height: 176.66667
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 63e192a0b5dc16bf0800000000000000
+      internalID: -332759106552521162
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: TDS-Monster-Character-Sprites9_14
+      rect:
+        serializedVersion: 2
+        x: 1350
+        y: 177.33333
+        width: 225
+        height: 176.66667
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 38656df65466c7a80800000000000000
+      internalID: -8467780750948280701
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: TDS-Monster-Character-Sprites9_15
+      rect:
+        serializedVersion: 2
+        x: 1575
+        y: 177.33333
+        width: 225
+        height: 176.66667
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: b495cc4a2ac1fdff0800000000000000
+      internalID: -9257189356316341
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: TDS-Monster-Character-Sprites9_16
+      rect:
+        serializedVersion: 2
+        x: 0
+        y: 1.3333282
+        width: 225
+        height: 176.66667
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 3850c784b43769390800000000000000
+      internalID: -7811929736451717757
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: TDS-Monster-Character-Sprites9_17
+      rect:
+        serializedVersion: 2
+        x: 225
+        y: 1.3333282
+        width: 225
+        height: 176.66667
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 2ea601ed209eaebc0800000000000000
+      internalID: -3752931140935062814
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: TDS-Monster-Character-Sprites9_18
+      rect:
+        serializedVersion: 2
+        x: 450
+        y: 1.3333282
+        width: 225
+        height: 176.66667
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: aa91a4c4da9f9bd30800000000000000
+      internalID: 4447860629709658538
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: TDS-Monster-Character-Sprites9_19
+      rect:
+        serializedVersion: 2
+        x: 900
+        y: 1.3333282
+        width: 225
+        height: 176.66667
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: ebd24d68ab4ef64b0800000000000000
+      internalID: -5444881934690538050
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    outline: []
+    physicsShape: []
+    bones: []
+    spriteID: 5e97eb03825dee720800000000000000
+    internalID: 0
+    vertices: []
+    indices: 
+    edges: []
+    weights: []
+    secondaryTextures: []
+  spritePackingTag: 
+  pSDRemoveMatte: 0
+  pSDShowRemoveMatteOption: 0
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 

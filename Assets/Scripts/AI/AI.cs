@@ -1,7 +1,7 @@
 using System.Collections;
 using UnityEngine;
 using UnityEngine.AI;
-public class AIPursuit : MonoBehaviour
+public class AI : MonoBehaviour
 {
     protected NavMeshAgent      agent;
     protected GameObject        target;
@@ -10,17 +10,21 @@ public class AIPursuit : MonoBehaviour
     protected Animator          animator;
     protected Vector3           lastVisitPos;
     protected float             baseSpeed;
+    protected float             baseStopDisntance;
     protected bool              isActivePursuit;
     protected bool              isPlayerInSight;
     private bool                isActiveNewPos;
 
+    public bool IsActivePursuit { get => isActivePursuit; }
+    public bool IsPlayerInSight { get => isPlayerInSight; }
+
     [Range(0, 100)]
-    public float health;
+    public float Health = 100;
     [Range(0, 100)]
-    public float damage;
+    public float Damage = 10;
 
     [HideInInspector]
-    public bool  isActiveRandomStep;
+    public bool isActiveRandomStep;
     [HideInInspector]
     public float radius = 1f;
     [HideInInspector]
@@ -35,6 +39,7 @@ public class AIPursuit : MonoBehaviour
         AnimationMove();
         StoppingOnTargetLoss();
         animator.speed = agent.speed / baseSpeed;
+        //agent.stoppingDistance = baseStopDisntance;
     }
     protected IEnumerator RandomStep()
     {
@@ -44,9 +49,9 @@ public class AIPursuit : MonoBehaviour
             if (isActivePursuit
                 || !isActiveRandomStep)
             {
-                agent.stoppingDistance 
-                    = (GetComponent<CircleCollider2D>().radius
-                    + target.GetComponent<CircleCollider2D>().radius) * 2;
+                //agent.stoppingDistance 
+                //    = (GetComponent<CircleCollider2D>().radius
+                //    + target.GetComponent<CircleCollider2D>().radius) * 2;
                 yield break;
             }
             Vector3 newPosStandstill 
@@ -55,11 +60,19 @@ public class AIPursuit : MonoBehaviour
             agent.stoppingDistance = 0;
             agent.SetDestination(newPosStandstill);
             AnimationMove();
-            animator.SetInteger("Zombie", 1);
+            animator.SetInteger("Enemy", 1);
             animator.speed = agent.speed / baseSpeed;
             yield return new WaitUntil(()
                 => agent.velocity == Vector3.zero);
-            animator.SetInteger("Zombie", 0);
+            animator.SetInteger("Enemy", 0);
+        }
+    }
+    private IEnumerator CheckPlayerInSight(Transform target, float time = 2f)
+    {
+        yield return new WaitForSeconds(time);
+        if (agent.Raycast(target.position, out _))
+        {
+            isPlayerInSight = false;
         }
     }
     protected void DrawPath()
@@ -75,14 +88,7 @@ public class AIPursuit : MonoBehaviour
             line.enabled = false;
         }
     }
-    private IEnumerator CheckPlayerInSight(Transform target, float time = 2f)
-    {
-        yield return new WaitForSeconds(time);
-        if (agent.Raycast(target.position, out _))
-        {
-            isPlayerInSight = false;
-        }
-    }
+    
     protected void RotateAtTarget(Vector3? eye = null)
     {
         float signedAngle = Vector2.SignedAngle(eye ?? transform.up, agent.steeringTarget - transform.position);
@@ -97,9 +103,9 @@ public class AIPursuit : MonoBehaviour
     private void AnimationMove()
     {
         if (agent.velocity == Vector3.zero)
-            animator.SetInteger("Zombie", 0);
+            animator.SetInteger("Enemy", 0);
         else
-            animator.SetInteger("Zombie", 1);
+            animator.SetInteger("Enemy", 1);
     }
     private Vector3 CheckNextPos(Vector3 oldPos, float randomMin, float randomMax)
     {
@@ -117,6 +123,7 @@ public class AIPursuit : MonoBehaviour
         if (isPlayerInSight)
         {
             lastVisitPos = target.position;
+            agent.stoppingDistance = baseStopDisntance;
             isActiveNewPos = true;
         } 
         if (isPlayerInSight
@@ -128,6 +135,7 @@ public class AIPursuit : MonoBehaviour
             && isActiveNewPos)
         {
             lastVisitPos = CheckNextPos(lastVisitPos, 0f, 1f);
+            agent.stoppingDistance = 0;
             isActiveNewPos = false;
         } 
         return lastVisitPos;
