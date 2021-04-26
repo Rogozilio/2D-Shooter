@@ -2,18 +2,24 @@ using System.Collections;
 using UnityEngine;
 using UnityEngine.AI;
 public class AI : MonoBehaviour
-{
+{ 
+    private bool                isActiveNewPos;
+
     protected NavMeshAgent      agent;
     protected GameObject        target;
     protected SpriteRenderer    sprite;
     protected LineRenderer      line;
     protected Animator          animator;
     protected Vector3           lastVisitPos;
+    protected AudioClip         soundDetection;
+    protected AudioClip         soundEnemy;
+    protected AudioClip         soundAttack;
+    protected AudioClip         soundDead;
+    protected AudioSource       audio;
     protected float             baseSpeed;
     protected float             baseStopDisntance;
     protected bool              isActivePursuit;
     protected bool              isPlayerInSight;
-    private bool                isActiveNewPos;
 
     public bool IsActivePursuit { get => isActivePursuit; }
     public bool IsPlayerInSight { get => isPlayerInSight; }
@@ -32,14 +38,31 @@ public class AI : MonoBehaviour
     [HideInInspector]
     public float delay = 4f;
 
-    protected void MoveToTarget()
+    private void Awake()
+    {
+        agent = GetComponent<NavMeshAgent>();
+        agent.updateRotation = false;
+        agent.updateUpAxis = false;
+
+        target      = GameObject.FindGameObjectWithTag("Player");
+        audio       = GetComponent<AudioSource>();
+        sprite      = GetComponent<SpriteRenderer>();
+        animator    = GetComponent<Animator>();
+        line        = GetComponent<LineRenderer>();
+
+        isActivePursuit = false;
+        lastVisitPos    = transform.position;
+        baseSpeed       = agent.speed;
+
+        StartCoroutine(RandomStep());
+    }
+    virtual protected void MoveToTarget()
     {
         agent.speed = baseSpeed;
         agent.SetDestination(SetLastVisitPos(target.transform));
         AnimationMove();
         StoppingOnTargetLoss();
         animator.speed = agent.speed / baseSpeed;
-        //agent.stoppingDistance = baseStopDisntance;
     }
     protected IEnumerator RandomStep()
     {
@@ -49,9 +72,6 @@ public class AI : MonoBehaviour
             if (isActivePursuit
                 || !isActiveRandomStep)
             {
-                //agent.stoppingDistance 
-                //    = (GetComponent<CircleCollider2D>().radius
-                //    + target.GetComponent<CircleCollider2D>().radius) * 2;
                 yield break;
             }
             Vector3 newPosStandstill 
@@ -88,7 +108,25 @@ public class AI : MonoBehaviour
             line.enabled = false;
         }
     }
-    
+    protected void PlaySound(AudioClip clip
+        , bool isLoop = false
+        , bool isPlayOnShot = false
+        , float time = 0f)
+    {
+        if(clip != null)
+        {
+            audio.time = time;
+            audio.loop = isLoop;
+            
+            if (isPlayOnShot)
+                audio.PlayOneShot(clip);
+            else
+            {
+                audio.clip = clip;
+                audio.Play();
+            } 
+        }
+    }
     protected void RotateAtTarget(Vector3? eye = null)
     {
         float signedAngle = Vector2.SignedAngle(eye ?? transform.up, agent.steeringTarget - transform.position);
@@ -102,7 +140,7 @@ public class AI : MonoBehaviour
     }
     private void AnimationMove()
     {
-        if (agent.velocity == Vector3.zero)
+        if (agent.velocity == Vector3.zero )
             animator.SetInteger("Enemy", 0);
         else
             animator.SetInteger("Enemy", 1);
@@ -147,6 +185,36 @@ public class AI : MonoBehaviour
         {
             isActivePursuit = false;
             StartCoroutine(RandomStep());
+        }
+    }
+    void OnTriggerStay2D(Collider2D other)
+    {
+        //созвать ближайших врагов
+        if (other.CompareTag("Enemy"))
+        {
+            AI enemy = other.gameObject.GetComponent<AI>();
+            if (enemy.IsActivePursuit
+                && enemy.IsPlayerInSight
+                && !isPlayerInSight)
+            {
+                isActivePursuit = true;
+                isPlayerInSight = true;
+            }
+        }
+        //обнаружение игрока
+        if (other.CompareTag("Player")
+            && !isActivePursuit && !isPlayerInSight)
+        {
+            Ray ray = new Ray(transform.position,
+                   other.transform.position - transform.position);
+            RaycastHit2D hit = Physics2D.Raycast(ray.origin, ray.direction);
+
+            if (other.CompareTag(hit.collider.gameObject.tag))
+            {
+                PlaySound(soundDetection, false, true);
+                isActivePursuit = true;
+                isPlayerInSight = true;
+            }
         }
     }
 }
