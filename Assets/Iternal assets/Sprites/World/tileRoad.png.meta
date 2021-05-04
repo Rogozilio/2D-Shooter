@@ -1,0 +1,1533 @@
+fileFormatVersion: 2
+guid: 91f1bb23c8f2a4746841bd7c895a30d3
+TextureImporter:
+  internalIDToNameTable:
+  - first:
+      213: 8833449158831590007
+    second: tileRoad_0
+  - first:
+      213: -6466067232234964467
+    second: tileRoad_1
+  - first:
+      213: 7939055487300700376
+    second: tileRoad_2
+  - first:
+      213: -7258840844564869013
+    second: tileRoad_3
+  - first:
+      213: -4848680447577021217
+    second: tileRoad_4
+  - first:
+      213: 2394630929463038583
+    second: tileRoad_5
+  - first:
+      213: -2458460540224162692
+    second: tileRoad_6
+  - first:
+      213: -1461481770855029697
+    second: tileRoad_7
+  - first:
+      213: 7053444685765708592
+    second: tileRoad_8
+  - first:
+      213: -1364933070710216925
+    second: tileRoad_9
+  - first:
+      213: 6203625814883202310
+    second: tileRoad_10
+  - first:
+      213: 8369647727234572168
+    second: tileRoad_11
+  - first:
+      213: 1375676178857896131
+    second: tileRoad_12
+  - first:
+      213: -4224258652627358296
+    second: tileRoad_13
+  - first:
+      213: 7636598622242605859
+    second: tileRoad_14
+  - first:
+      213: 1543397439794252730
+    second: tileRoad_15
+  - first:
+      213: 8540468406699802893
+    second: tileRoad_16
+  - first:
+      213: -2597067237312746184
+    second: tileRoad_17
+  - first:
+      213: 3516940819052823979
+    second: tileRoad_18
+  - first:
+      213: -1360727150795978543
+    second: tileRoad_19
+  - first:
+      213: 5979850067788846622
+    second: tileRoad_20
+  - first:
+      213: -2063008807359531238
+    second: tileRoad_21
+  - first:
+      213: 3927621745349573906
+    second: tileRoad_22
+  - first:
+      213: -4674455976685673823
+    second: tileRoad_23
+  - first:
+      213: -1325233994198480968
+    second: tileRoad_24
+  - first:
+      213: 4628765296982037217
+    second: tileRoad_25
+  - first:
+      213: -8139622892015179047
+    second: tileRoad_26
+  - first:
+      213: 3958956554940126694
+    second: tileRoad_27
+  - first:
+      213: 5554895871155515552
+    second: tileRoad_28
+  - first:
+      213: 5490434150695192997
+    second: tileRoad_29
+  - first:
+      213: 4461705065478256665
+    second: tileRoad_30
+  - first:
+      213: 7170686877865849178
+    second: tileRoad_31
+  - first:
+      213: 6685173899309779283
+    second: tileRoad_32
+  - first:
+      213: -1474188871326746928
+    second: tileRoad_33
+  - first:
+      213: 2280998069186138048
+    second: tileRoad_34
+  - first:
+      213: 7230323018791235540
+    second: tileRoad_35
+  - first:
+      213: -3858336838723417592
+    second: tileRoad_36
+  - first:
+      213: 8184384691772084968
+    second: tileRoad_37
+  - first:
+      213: 2190335133303996850
+    second: tileRoad_38
+  - first:
+      213: 4655757760103884930
+    second: tileRoad_39
+  - first:
+      213: 2012559623544339210
+    second: tileRoad_40
+  - first:
+      213: 2216398615577548635
+    second: tileRoad_41
+  - first:
+      213: 3201107737871387629
+    second: tileRoad_42
+  - first:
+      213: -5849138247005103880
+    second: tileRoad_43
+  - first:
+      213: -5602023081928152342
+    second: tileRoad_44
+  - first:
+      213: 8261109610309197968
+    second: tileRoad_45
+  - first:
+      213: -4853600913356616772
+    second: tileRoad_46
+  - first:
+      213: -8251321699311718576
+    second: tileRoad_47
+  - first:
+      213: -887737364016855779
+    second: tileRoad_48
+  - first:
+      213: -5898654659137931779
+    second: tileRoad_49
+  - first:
+      213: -6989769203293190044
+    second: tileRoad_50
+  - first:
+      213: 9184958322700051243
+    second: tileRoad_51
+  - first:
+      213: -4945760682739051856
+    second: tileRoad_52
+  - first:
+      213: -6631657913166040050
+    second: tileRoad_53
+  - first:
+      213: -7751663068821463026
+    second: tileRoad_54
+  - first:
+      213: 5909951805364223386
+    second: tileRoad_55
+  - first:
+      213: 6541336109525837556
+    second: tileRoad_56
+  - first:
+      213: -7119229485093829841
+    second: tileRoad_57
+  - first:
+      213: 4888248512993124595
+    second: tileRoad_58
+  - first:
+      213: 8102167955429638975
+    second: tileRoad_59
+  - first:
+      213: -5872685409813350364
+    second: tileRoad_60
+  - first:
+      213: -5251769179153920273
+    second: tileRoad_61
+  - first:
+      213: 24004173071710852
+    second: tileRoad_62
+  - first:
+      213: 1753706908264321434
+    second: tileRoad_63
+  - first:
+      213: 9217476032770468334
+    second: tileRoad_64
+  - first:
+      213: -741011316946682901
+    second: tileRoad_65
+  - first:
+      213: -7563239917102169012
+    second: tileRoad_66
+  - first:
+      213: -4761105775744651882
+    second: tileRoad_67
+  - first:
+      213: 2330317221550804859
+    second: tileRoad_68
+  - first:
+      213: 5493640408538923676
+    second: tileRoad_75
+  - first:
+      213: 3135871448768338868
+    second: tileRoad_76
+  - first:
+      213: 5784985542076943814
+    second: tileRoad_77
+  externalObjects: {}
+  serializedVersion: 11
+  mipmaps:
+    mipMapMode: 0
+    enableMipMap: 0
+    sRGBTexture: 1
+    linearTexture: 0
+    fadeOut: 0
+    borderMipMap: 0
+    mipMapsPreserveCoverage: 0
+    alphaTestReferenceValue: 0.5
+    mipMapFadeDistanceStart: 1
+    mipMapFadeDistanceEnd: 3
+  bumpmap:
+    convertToNormalMap: 0
+    externalNormalMap: 0
+    heightScale: 0.25
+    normalMapFilter: 0
+  isReadable: 0
+  streamingMipmaps: 0
+  streamingMipmapsPriority: 0
+  vTOnly: 0
+  grayScaleToAlpha: 0
+  generateCubemap: 6
+  cubemapConvolution: 0
+  seamlessCubemap: 0
+  textureFormat: 1
+  maxTextureSize: 2048
+  textureSettings:
+    serializedVersion: 2
+    filterMode: -1
+    aniso: -1
+    mipBias: -100
+    wrapU: 1
+    wrapV: 1
+    wrapW: 1
+  nPOTScale: 0
+  lightmap: 0
+  compressionQuality: 50
+  spriteMode: 2
+  spriteExtrude: 1
+  spriteMeshType: 1
+  alignment: 0
+  spritePivot: {x: 0.5, y: 0.5}
+  spritePixelsToUnits: 90
+  spriteBorder: {x: 0, y: 0, z: 0, w: 0}
+  spriteGenerateFallbackPhysicsShape: 1
+  alphaUsage: 1
+  alphaIsTransparency: 1
+  spriteTessellationDetail: -1
+  textureType: 8
+  textureShape: 1
+  singleChannelComponent: 0
+  flipbookRows: 1
+  flipbookColumns: 1
+  maxTextureSizeSet: 0
+  compressionQualitySet: 0
+  textureFormatSet: 0
+  ignorePngGamma: 0
+  applyGammaDecoding: 0
+  platformSettings:
+  - serializedVersion: 3
+    buildTarget: DefaultTexturePlatform
+    maxTextureSize: 2048
+    resizeAlgorithm: 0
+    textureFormat: -1
+    textureCompression: 1
+    compressionQuality: 50
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    overridden: 0
+    androidETC2FallbackOverride: 0
+    forceMaximumCompressionQuality_BC6H_BC7: 0
+  - serializedVersion: 3
+    buildTarget: Standalone
+    maxTextureSize: 2048
+    resizeAlgorithm: 0
+    textureFormat: -1
+    textureCompression: 1
+    compressionQuality: 50
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    overridden: 0
+    androidETC2FallbackOverride: 0
+    forceMaximumCompressionQuality_BC6H_BC7: 0
+  - serializedVersion: 3
+    buildTarget: Android
+    maxTextureSize: 2048
+    resizeAlgorithm: 0
+    textureFormat: -1
+    textureCompression: 1
+    compressionQuality: 50
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    overridden: 0
+    androidETC2FallbackOverride: 0
+    forceMaximumCompressionQuality_BC6H_BC7: 0
+  spriteSheet:
+    serializedVersion: 2
+    sprites:
+    - serializedVersion: 2
+      name: tileRoad_0
+      rect:
+        serializedVersion: 2
+        x: 65
+        y: 762
+        width: 95
+        height: 95
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 77a41a55537b69a70800000000000000
+      internalID: 8833449158831590007
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: tileRoad_1
+      rect:
+        serializedVersion: 2
+        x: 173
+        y: 762
+        width: 95
+        height: 95
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: d0a77d86c1ae346a0800000000000000
+      internalID: -6466067232234964467
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: tileRoad_2
+      rect:
+        serializedVersion: 2
+        x: 282
+        y: 762
+        width: 95
+        height: 95
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 8d88cac17e03d2e60800000000000000
+      internalID: 7939055487300700376
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: tileRoad_3
+      rect:
+        serializedVersion: 2
+        x: 395
+        y: 762
+        width: 95
+        height: 95
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: b605d9af5ba634b90800000000000000
+      internalID: -7258840844564869013
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: tileRoad_4
+      rect:
+        serializedVersion: 2
+        x: 504
+        y: 762
+        width: 95
+        height: 95
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: fd42ac482d606bcb0800000000000000
+      internalID: -4848680447577021217
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: tileRoad_5
+      rect:
+        serializedVersion: 2
+        x: 613
+        y: 762
+        width: 95
+        height: 95
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 772dece94207b3120800000000000000
+      internalID: 2394630929463038583
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: tileRoad_6
+      rect:
+        serializedVersion: 2
+        x: 726
+        y: 762
+        width: 95
+        height: 95
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: c74bf950a2bc1edd0800000000000000
+      internalID: -2458460540224162692
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: tileRoad_7
+      rect:
+        serializedVersion: 2
+        x: 835
+        y: 762
+        width: 95
+        height: 95
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: f342a7a9216c7bbe0800000000000000
+      internalID: -1461481770855029697
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: tileRoad_8
+      rect:
+        serializedVersion: 2
+        x: 944
+        y: 762
+        width: 95
+        height: 95
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 03b8ee9229ed2e160800000000000000
+      internalID: 7053444685765708592
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: tileRoad_12
+      rect:
+        serializedVersion: 2
+        x: 65
+        y: 654
+        width: 95
+        height: 95
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 3c8aace2232671310800000000000000
+      internalID: 1375676178857896131
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: tileRoad_13
+      rect:
+        serializedVersion: 2
+        x: 173
+        y: 654
+        width: 95
+        height: 95
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 8ada6c2f22b6065c0800000000000000
+      internalID: -4224258652627358296
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: tileRoad_14
+      rect:
+        serializedVersion: 2
+        x: 284
+        y: 654
+        width: 95
+        height: 95
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 32b020b8cf5aaf960800000000000000
+      internalID: 7636598622242605859
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: tileRoad_15
+      rect:
+        serializedVersion: 2
+        x: 394
+        y: 654
+        width: 95
+        height: 95
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: abb0f225bcf3b6510800000000000000
+      internalID: 1543397439794252730
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: tileRoad_16
+      rect:
+        serializedVersion: 2
+        x: 504
+        y: 654
+        width: 95
+        height: 95
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: d01c9cc34c6d58670800000000000000
+      internalID: 8540468406699802893
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: tileRoad_17
+      rect:
+        serializedVersion: 2
+        x: 615
+        y: 654
+        width: 95
+        height: 95
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 83d2b268b1d55fbd0800000000000000
+      internalID: -2597067237312746184
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: tileRoad_18
+      rect:
+        serializedVersion: 2
+        x: 725
+        y: 654
+        width: 95
+        height: 95
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: ba507b79a0faec030800000000000000
+      internalID: 3516940819052823979
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: tileRoad_19
+      rect:
+        serializedVersion: 2
+        x: 835
+        y: 654
+        width: 95
+        height: 95
+      alignment: 9
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 1d88394add9bd1de0800000000000000
+      internalID: -1360727150795978543
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: tileRoad_20
+      rect:
+        serializedVersion: 2
+        x: 946
+        y: 654
+        width: 95
+        height: 95
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: e1656ac34f1bcf250800000000000000
+      internalID: 5979850067788846622
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: tileRoad_24
+      rect:
+        serializedVersion: 2
+        x: 64
+        y: 543
+        width: 95
+        height: 95
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 8b7078324b2db9de0800000000000000
+      internalID: -1325233994198480968
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: tileRoad_25
+      rect:
+        serializedVersion: 2
+        x: 173
+        y: 543
+        width: 95
+        height: 95
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 1e2154b638dac3040800000000000000
+      internalID: 4628765296982037217
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: tileRoad_26
+      rect:
+        serializedVersion: 2
+        x: 284
+        y: 543
+        width: 95
+        height: 95
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 9da2cc3fa104a0f80800000000000000
+      internalID: -8139622892015179047
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: tileRoad_27
+      rect:
+        serializedVersion: 2
+        x: 394
+        y: 543
+        width: 95
+        height: 95
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 6e51962e20a01f630800000000000000
+      internalID: 3958956554940126694
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: tileRoad_28
+      rect:
+        serializedVersion: 2
+        x: 504
+        y: 543
+        width: 95
+        height: 95
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 0a0328c1d54f61d40800000000000000
+      internalID: 5554895871155515552
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: tileRoad_29
+      rect:
+        serializedVersion: 2
+        x: 615
+        y: 543
+        width: 95
+        height: 95
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 5a94cde35c0f13c40800000000000000
+      internalID: 5490434150695192997
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: tileRoad_30
+      rect:
+        serializedVersion: 2
+        x: 725
+        y: 543
+        width: 95
+        height: 95
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 91874603e192bed30800000000000000
+      internalID: 4461705065478256665
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: tileRoad_31
+      rect:
+        serializedVersion: 2
+        x: 835
+        y: 543
+        width: 95
+        height: 95
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: a51bfb639b5638360800000000000000
+      internalID: 7170686877865849178
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: tileRoad_32
+      rect:
+        serializedVersion: 2
+        x: 946
+        y: 543
+        width: 95
+        height: 95
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 359821aed3286cc50800000000000000
+      internalID: 6685173899309779283
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: tileRoad_36
+      rect:
+        serializedVersion: 2
+        x: 65
+        y: 432
+        width: 95
+        height: 95
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 80a4618661f647ac0800000000000000
+      internalID: -3858336838723417592
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: tileRoad_37
+      rect:
+        serializedVersion: 2
+        x: 174
+        y: 432
+        width: 95
+        height: 95
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 8e25832b386c49170800000000000000
+      internalID: 8184384691772084968
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: tileRoad_38
+      rect:
+        serializedVersion: 2
+        x: 283
+        y: 432
+        width: 95
+        height: 95
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 2b184a7e232a56e10800000000000000
+      internalID: 2190335133303996850
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: tileRoad_39
+      rect:
+        serializedVersion: 2
+        x: 394
+        y: 432
+        width: 95
+        height: 95
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 288a24bf3039c9040800000000000000
+      internalID: 4655757760103884930
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: tileRoad_40
+      rect:
+        serializedVersion: 2
+        x: 504
+        y: 432
+        width: 95
+        height: 95
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: a0b77aa805c0eeb10800000000000000
+      internalID: 2012559623544339210
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: tileRoad_41
+      rect:
+        serializedVersion: 2
+        x: 615
+        y: 432
+        width: 95
+        height: 95
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: b57da224cca32ce10800000000000000
+      internalID: 2216398615577548635
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: tileRoad_42
+      rect:
+        serializedVersion: 2
+        x: 725
+        y: 432
+        width: 95
+        height: 95
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: deb0493078e9c6c20800000000000000
+      internalID: 3201107737871387629
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: tileRoad_43
+      rect:
+        serializedVersion: 2
+        x: 835
+        y: 432
+        width: 95
+        height: 95
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 8f81c1121cfa3dea0800000000000000
+      internalID: -5849138247005103880
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: tileRoad_44
+      rect:
+        serializedVersion: 2
+        x: 945
+        y: 432
+        width: 95
+        height: 95
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: aea222210bd9142b0800000000000000
+      internalID: -5602023081928152342
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: tileRoad_48
+      rect:
+        serializedVersion: 2
+        x: 64
+        y: 322
+        width: 95
+        height: 95
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: d150fe3229f1ea3f0800000000000000
+      internalID: -887737364016855779
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: tileRoad_49
+      rect:
+        serializedVersion: 2
+        x: 174
+        y: 322
+        width: 95
+        height: 95
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: df5716507d4c32ea0800000000000000
+      internalID: -5898654659137931779
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: tileRoad_50
+      rect:
+        serializedVersion: 2
+        x: 284
+        y: 322
+        width: 95
+        height: 95
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 4688eb761f95ffe90800000000000000
+      internalID: -6989769203293190044
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: tileRoad_51
+      rect:
+        serializedVersion: 2
+        x: 394
+        y: 322
+        width: 95
+        height: 95
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: b23ed453ee6877f70800000000000000
+      internalID: 9184958322700051243
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: tileRoad_52
+      rect:
+        serializedVersion: 2
+        x: 504
+        y: 322
+        width: 95
+        height: 95
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 0b2de31ecd02d5bb0800000000000000
+      internalID: -4945760682739051856
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: tileRoad_53
+      rect:
+        serializedVersion: 2
+        x: 615
+        y: 322
+        width: 95
+        height: 95
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: e0474d5934e97f3a0800000000000000
+      internalID: -6631657913166040050
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: tileRoad_54
+      rect:
+        serializedVersion: 2
+        x: 725
+        y: 322
+        width: 95
+        height: 95
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: e00e16c428f8c6490800000000000000
+      internalID: -7751663068821463026
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: tileRoad_55
+      rect:
+        serializedVersion: 2
+        x: 835
+        y: 322
+        width: 95
+        height: 95
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: a9db96ecadd540250800000000000000
+      internalID: 5909951805364223386
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: tileRoad_56
+      rect:
+        serializedVersion: 2
+        x: 945
+        y: 322
+        width: 95
+        height: 95
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 4f629bcb88e77ca50800000000000000
+      internalID: 6541336109525837556
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: tileRoad_60
+      rect:
+        serializedVersion: 2
+        x: 64
+        y: 212
+        width: 95
+        height: 95
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 428b47e0cb7008ea0800000000000000
+      internalID: -5872685409813350364
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: tileRoad_61
+      rect:
+        serializedVersion: 2
+        x: 174
+        y: 212
+        width: 95
+        height: 95
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: fee8f22b1c7fd17b0800000000000000
+      internalID: -5251769179153920273
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: tileRoad_62
+      rect:
+        serializedVersion: 2
+        x: 284
+        y: 212
+        width: 95
+        height: 95
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 48af0111ba7455000800000000000000
+      internalID: 24004173071710852
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: tileRoad_63
+      rect:
+        serializedVersion: 2
+        x: 394
+        y: 212
+        width: 95
+        height: 95
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: a915e3b342b665810800000000000000
+      internalID: 1753706908264321434
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: tileRoad_64
+      rect:
+        serializedVersion: 2
+        x: 504
+        y: 212
+        width: 95
+        height: 95
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: ee9e5f29d9d0bef70800000000000000
+      internalID: 9217476032770468334
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: tileRoad_65
+      rect:
+        serializedVersion: 2
+        x: 615
+        y: 212
+        width: 95
+        height: 95
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: beb39de122667b5f0800000000000000
+      internalID: -741011316946682901
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: tileRoad_66
+      rect:
+        serializedVersion: 2
+        x: 725
+        y: 212
+        width: 95
+        height: 95
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: c44021efd59f90790800000000000000
+      internalID: -7563239917102169012
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: tileRoad_67
+      rect:
+        serializedVersion: 2
+        x: 835
+        y: 212
+        width: 95
+        height: 95
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 69dedaab5872dedb0800000000000000
+      internalID: -4761105775744651882
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: tileRoad_68
+      rect:
+        serializedVersion: 2
+        x: 945
+        y: 212
+        width: 95
+        height: 95
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: b7fc28c9a23f65020800000000000000
+      internalID: 2330317221550804859
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: tileRoad_75
+      rect:
+        serializedVersion: 2
+        x: 394
+        y: 102
+        width: 95
+        height: 95
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: c92c1b258d45d3c40800000000000000
+      internalID: 5493640408538923676
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: tileRoad_76
+      rect:
+        serializedVersion: 2
+        x: 504
+        y: 102
+        width: 95
+        height: 95
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 4bb5025d77ad48b20800000000000000
+      internalID: 3135871448768338868
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: tileRoad_77
+      rect:
+        serializedVersion: 2
+        x: 615
+        y: 102
+        width: 95
+        height: 95
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 6cd444a43b5684050800000000000000
+      internalID: 5784985542076943814
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    outline: []
+    physicsShape: []
+    bones: []
+    spriteID: 5e97eb03825dee720800000000000000
+    internalID: 0
+    vertices: []
+    indices: 
+    edges: []
+    weights: []
+    secondaryTextures: []
+  spritePackingTag: 
+  pSDRemoveMatte: 0
+  pSDShowRemoveMatteOption: 0
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 

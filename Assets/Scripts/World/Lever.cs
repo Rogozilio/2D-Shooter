@@ -6,17 +6,26 @@ public class Lever : MonoBehaviour
 {
     private Animator _animator;
 
-    public GameObject door;
+    public GameObject[] doors;
     private void Awake()
     {
         _animator = GetComponent<Animator>();
     }
     public void SwitchLever()
     {
-        if(_animator.GetInteger("Lever") == 1)
+        if (_animator.GetInteger("Lever") == 1)
         {
-            door.GetComponent<Door>().OpenOrCloseDoor();
-            _animator.SetInteger("Lever", 2);
+            foreach(GameObject door in doors)
+                door.GetComponent<Door>().OpenOrCloseDoor();
+            if(_animator.GetCurrentAnimatorStateInfo(0)
+                .IsName(gameObject.name.Split(' ')[0] + "UseOff"))
+            {
+                _animator.Play(gameObject.name.Split(' ')[0] + "InOn");
+            } 
+            else
+            {
+                _animator.Play(gameObject.name.Split(' ')[0] + "InOff");
+            } 
             gameObject.GetComponent<AudioSource>().Play();
         }
     }

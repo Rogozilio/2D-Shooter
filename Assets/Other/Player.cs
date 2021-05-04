@@ -33,7 +33,7 @@ public class Player : MonoBehaviour
                 collision.gameObject
                 .GetComponent<Lamp>().ActiveLamp();
             }
-            if (collision.gameObject.name == "Lever")
+            if (collision.gameObject.tag == "Lever")
             {
                 collision.gameObject
                     .GetComponent<Lever>().SwitchLever();

@@ -8,8 +8,13 @@ public class Door : MonoBehaviour
     private bool isOpenDoor = false;
     private void Awake()
     {
-        _animator = GetComponent<Animator>();
+        _animator = gameObject.GetComponent<Animator>();
         CloseDoor();
+    }
+    private void Update()
+    {
+        Vector2 S = gameObject.GetComponent<SpriteRenderer>().size;
+        gameObject.GetComponent<BoxCollider2D>().size = S;
     }
     public void OpenOrCloseDoor()
     {
