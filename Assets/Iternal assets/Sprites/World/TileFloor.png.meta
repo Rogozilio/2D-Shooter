@@ -158,6 +158,9 @@ TextureImporter:
   - first:
       213: -2023930990956327152
     second: TileFloor_1
+  - first:
+      213: 1790674826178557253
+    second: TileFloor_2
   externalObjects: {}
   serializedVersion: 11
   mipmaps:
@@ -325,10 +328,10 @@ TextureImporter:
       name: Tilelist2_3
       rect:
         serializedVersion: 2
-        x: 390
-        y: 1171.8
-        width: 130.4
-        height: 130.2
+        x: 395
+        y: 1175
+        width: 122
+        height: 124
       alignment: 0
       pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -1271,11 +1274,11 @@ TextureImporter:
       rect:
         serializedVersion: 2
         x: 520
-        y: 224
+        y: 225
         width: 38
         height: 38
-      alignment: 0
-      pivot: {x: 0.5, y: 0.5}
+      alignment: 9
+      pivot: {x: 0.53834456, y: 0.4999996}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
@@ -1338,7 +1341,7 @@ TextureImporter:
         width: 36
         height: 38
       alignment: 0
-      pivot: {x: 0, y: 0}
+      pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
@@ -1346,6 +1349,27 @@ TextureImporter:
       bones: []
       spriteID: 01fc42aac7d89e3e0800000000000000
       internalID: -2023930990956327152
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: TileFloor_2
+      rect:
+        serializedVersion: 2
+        x: 610
+        y: 480
+        width: 40
+        height: 40
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 5457b9a5441c9d810800000000000000
+      internalID: 1790674826178557253
       vertices: []
       indices: 
       edges: []
