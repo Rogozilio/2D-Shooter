@@ -1,5 +1,6 @@
 using System.Collections;
 using System.Collections.Generic;
+using UnityEngine.Experimental.Rendering.Universal;
 using UnityEngine;
 
 public class Door : MonoBehaviour
@@ -13,8 +14,8 @@ public class Door : MonoBehaviour
     }
     private void Update()
     {
-        Vector2 S = gameObject.GetComponent<SpriteRenderer>().size;
-        gameObject.GetComponent<BoxCollider2D>().size = S;
+        gameObject.GetComponent<BoxCollider2D>().size 
+            = gameObject.GetComponent<SpriteRenderer>().size;
     }
     public void OpenOrCloseDoor()
     {
@@ -27,9 +28,11 @@ public class Door : MonoBehaviour
     private void OpenDoor()
     {
         _animator.SetBool("Door", true);
+        GetComponent<ShadowCaster2D>().enabled = false;
     }
     private void CloseDoor()
     {
         _animator.SetBool("Door", false);
+        GetComponent<ShadowCaster2D>().enabled = true;
     }
 }

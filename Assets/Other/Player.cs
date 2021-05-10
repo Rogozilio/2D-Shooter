@@ -27,8 +27,7 @@ public class Player : MonoBehaviour
     {
         if (_isKeyEActive)
         {
-            if (collision.gameObject.name == "Lamp"
-                        || collision.gameObject.name == "Spotlight")
+            if (collision.gameObject.tag == "Lamp")
             {
                 collision.gameObject
                 .GetComponent<Lamp>().ActiveLamp();
