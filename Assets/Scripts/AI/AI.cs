@@ -24,10 +24,10 @@ public class AI : MonoBehaviour
     public bool IsActivePursuit { get => isActivePursuit; }
     public bool IsPlayerInSight { get => isPlayerInSight; }
 
+    [Range(0, 1000)]
+    public float Health;
     [Range(0, 100)]
-    public float Health = 100;
-    [Range(0, 100)]
-    public float Damage = 10;
+    public float Damage;
 
     [HideInInspector]
     public bool isActiveRandomStep;
@@ -138,7 +138,7 @@ public class AI : MonoBehaviour
             transform.eulerAngles = angles;
         }
     }
-    private void AnimationMove()
+    protected void AnimationMove()
     {
         if (agent.velocity == Vector3.zero )
             animator.SetInteger("Enemy", 0);

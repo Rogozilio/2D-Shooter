@@ -13,7 +13,7 @@ public class Player : MonoBehaviour
         Speed = 5;
         _rigidBody = GetComponent<Rigidbody2D>();
     }
-    void Update()
+    void FixedUpdate()
     {
         _rigidBody.velocity 
             = new Vector2(Input.GetAxis("Horizontal") * Speed
