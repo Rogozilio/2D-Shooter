@@ -10,6 +10,9 @@ public class CollisionEnemy : MonoBehaviour
     private Transform transformObject;
 
     public HealthBar healtBar;
+
+    [SerializeField]
+    GameObject Player;
     // Start is called before the first frame update
 
     public void Start()
@@ -36,5 +39,16 @@ public class CollisionEnemy : MonoBehaviour
     {
         currentHealth -= damage;
         healtBar.SetHealth(currentHealth);
+    }
+    public void Update()
+    {
+        if (currentHealth <= 0)
+        {
+            Die();
+        }
+    }
+    void Die()
+    {
+        Destroy(Player);
     }
 }
