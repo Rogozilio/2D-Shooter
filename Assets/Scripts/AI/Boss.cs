@@ -80,7 +80,7 @@ public class Boss : AI
                 Instantiate(SecondEnemy[Random.Range(0, SecondEnemy.Length)]
                     , _spawner4.position, Quaternion.identity);
             }
-            yield return new WaitForSeconds(8f);
+            yield return new WaitForSeconds(TimeSpawnEnemy);
             if(_bossStage == BossStage.Third)
             {
                 yield break;
@@ -114,12 +114,6 @@ public class Boss : AI
         bullet.GetComponent<BossProjectile>().Target = target;
         PlaySound(_soundAttack2);
     }
-    private void EventAttackThirdStage()
-    {
-        _isPuchedBoss = true;
-        target.GetComponent<Player>().Health -= Damage;
-        PlaySound(_soundAttack3, false, true);
-    }
     private void Attack()
     {
         if (agent.remainingDistance <= 0.8)
@@ -127,6 +121,13 @@ public class Boss : AI
             animator.SetInteger("Enemy", 2);
         }
     }
+    private void EventAttackThirdStage()
+    {
+        _isPuchedBoss = true;
+        target.GetComponent<Player>().Health -= Damage;
+        PlaySound(_soundAttack3, false, true);
+    }
+    
     private void EventSoundStep()
     {
         PlaySound(_soundStep);

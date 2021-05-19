@@ -15,7 +15,7 @@ public class Projectile : MonoBehaviour
     {
         _rigidBody = GetComponent<Rigidbody2D>();
     }
-    void Update()
+    private void Update()
     {
         _rigidBody.velocity = transform.right * _speed;
     }

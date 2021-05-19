@@ -3,11 +3,10 @@ using UnityEngine;
 using UnityEngine.AI;
 public class AI : MonoBehaviour
 { 
-    private bool                isActiveNewPos;
+    private bool                isFindNewPos;
 
     protected NavMeshAgent      agent;
     protected GameObject        target;
-    protected SpriteRenderer    sprite;
     protected LineRenderer      line;
     protected Animator          animator;
     protected Vector3           lastVisitPos;
@@ -46,7 +45,6 @@ public class AI : MonoBehaviour
 
         target      = GameObject.FindGameObjectWithTag("Player");
         audio       = GetComponent<AudioSource>();
-        sprite      = GetComponent<SpriteRenderer>();
         animator    = GetComponent<Animator>();
         line        = GetComponent<LineRenderer>();
 
@@ -59,7 +57,7 @@ public class AI : MonoBehaviour
     virtual protected void MoveToTarget()
     {
         agent.speed = baseSpeed;
-        agent.SetDestination(SetLastVisitPos(target.transform));
+        agent.SetDestination(SetLastVisitPos());
         AnimationMove();
         StoppingOnTargetLoss();
         animator.speed = agent.speed / baseSpeed;
@@ -79,7 +77,6 @@ public class AI : MonoBehaviour
             agent.speed = speed;
             agent.stoppingDistance = 0;
             agent.SetDestination(newPosStandstill);
-            AnimationMove();
             animator.SetInteger("Enemy", 1);
             animator.speed = agent.speed / baseSpeed;
             yield return new WaitUntil(()
@@ -87,10 +84,10 @@ public class AI : MonoBehaviour
             animator.SetInteger("Enemy", 0);
         }
     }
-    private IEnumerator CheckPlayerInSight(Transform target, float time = 2f)
+    private IEnumerator CheckPlayerInSight(float time = 2f)
     {
         yield return new WaitForSeconds(time);
-        if (agent.Raycast(target.position, out _))
+        if (agent.Raycast(target.transform.position, out _))
         {
             isPlayerInSight = false;
         }
@@ -116,12 +113,12 @@ public class AI : MonoBehaviour
         if(clip != null)
         {
             audio.time = time;
-            audio.loop = isLoop;
             
             if (isPlayOnShot)
                 audio.PlayOneShot(clip);
             else
             {
+                audio.loop = isLoop;
                 audio.clip = clip;
                 audio.Play();
             } 
@@ -129,7 +126,8 @@ public class AI : MonoBehaviour
     }
     protected void RotateAtTarget(Vector3? eye = null)
     {
-        float signedAngle = Vector2.SignedAngle(eye ?? transform.up, agent.steeringTarget - transform.position);
+        float signedAngle = Vector2.SignedAngle(eye ?? transform.up
+            , agent.steeringTarget - transform.position);
 
         if (Mathf.Abs(signedAngle) >= 1e-3f)
         {
@@ -138,7 +136,7 @@ public class AI : MonoBehaviour
             transform.eulerAngles = angles;
         }
     }
-    protected void AnimationMove()
+    virtual protected void AnimationMove()
     {
         if (agent.velocity == Vector3.zero )
             animator.SetInteger("Enemy", 0);
@@ -156,25 +154,25 @@ public class AI : MonoBehaviour
         }
         return newPos;
     }
-    private Vector3 SetLastVisitPos(Transform target)
+    private Vector3 SetLastVisitPos()
     {
         if (isPlayerInSight)
         {
-            lastVisitPos = target.position;
+            lastVisitPos = target.transform.position;
             agent.stoppingDistance = baseStopDisntance;
-            isActiveNewPos = true;
+            isFindNewPos = true;
         } 
         if (isPlayerInSight
-            && agent.Raycast(target.position, out _))
+            && agent.Raycast(target.transform.position, out _))
         {
-            StartCoroutine(CheckPlayerInSight(target));
+            StartCoroutine(CheckPlayerInSight());
         }
         if (!isPlayerInSight
-            && isActiveNewPos)
+            && isFindNewPos)
         {
             lastVisitPos = CheckNextPos(lastVisitPos, 0f, 1f);
             agent.stoppingDistance = 0;
-            isActiveNewPos = false;
+            isFindNewPos = false;
         } 
         return lastVisitPos;
     }
@@ -203,7 +201,7 @@ public class AI : MonoBehaviour
         }
         //обнаружение игрока
         if (other.CompareTag("Player")
-            && !isActivePursuit && !isPlayerInSight)
+            && (!isActivePursuit || !isPlayerInSight))
         {
             Ray ray = new Ray(transform.position,
                    other.transform.position - transform.position);

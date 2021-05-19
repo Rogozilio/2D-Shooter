@@ -5,8 +5,6 @@ using UnityEngine.AI;
 
 public class Boomchik : AI
 {
-    private AudioClip _soundBoomchik;
-
     public float ExplosionRadius = 4;
     void OnEnable()
     {
@@ -18,7 +16,7 @@ public class Boomchik : AI
         soundEnemy      = Resources.Load<AudioClip>("Sounds/AI/Boomchik/soundBoomchik");
         soundDead       = Resources.Load<AudioClip>("Sounds/AI/Boomchik/soundDead");
     }
-    private void AnimationMove()
+    protected override void AnimationMove()
     {
         animator.SetInteger("Enemy", 1);
         if (agent.velocity == Vector3.zero
@@ -27,18 +25,13 @@ public class Boomchik : AI
         else
             animator.StopPlayback();
     }
-    protected override void MoveToTarget()
-    {
-        base.MoveToTarget();
-        AnimationMove();
-    }
     private void Attack()
     {
         if (agent.remainingDistance <= agent.stoppingDistance
             && agent.remainingDistance != 0
             && isActivePursuit && isPlayerInSight)
         {
-            isActivePursuit = false;
+            agent.enabled = false;
             animator.Play("AttackBoomchik");
             animator.SetInteger("Enemy", 2);
         }
@@ -74,7 +67,6 @@ public class Boomchik : AI
             if (!audio.isPlaying)
                 audio.enabled = false;
             GetComponent<BoxCollider2D>().enabled = false;
-            agent.enabled = false;
             enabled = false;
         }
     }
@@ -89,14 +81,11 @@ public class Boomchik : AI
             agent.stoppingDistance
                     = (GetComponent<BoxCollider2D>().size.y / 2
                     + target.GetComponent<CircleCollider2D>().radius) * 2;
+            if (!audio.isPlaying)
+                PlaySound(soundEnemy, true);
             MoveToTarget();
             Attack();
         }
-        if (Health <= 0)
-        {
-            EventAttack();
-        }
-        Dead();
         DrawPath();
     }
 }
