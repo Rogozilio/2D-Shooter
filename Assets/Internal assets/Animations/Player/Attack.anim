@@ -50,7 +50,7 @@ AnimationClip:
     - time: 0.7
       value: {fileID: 21300000, guid: 3bbe5ad7ceeb1f948a01dab7869df646, type: 3}
     attribute: m_Sprite
-    path: 
+    path: Sprite
     classID: 212
     script: {fileID: 0}
   m_SampleRate: 60
@@ -61,7 +61,7 @@ AnimationClip:
   m_ClipBindingConstant:
     genericBindings:
     - serializedVersion: 2
-      path: 0
+      path: 850496168
       attribute: 0
       script: {fileID: 0}
       typeID: 212
@@ -109,7 +109,7 @@ AnimationClip:
   m_HasMotionFloatCurves: 0
   m_Events:
   - time: 0
-    functionName: EventAttackM
+    functionName: EventSoundAttack
     data: 
     objectReferenceParameter: {fileID: 0}
     floatParameter: 0

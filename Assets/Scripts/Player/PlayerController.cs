@@ -5,23 +5,19 @@ using UnityEngine.UI;
 
 public class PlayerController : MonoBehaviour
 {
-    public float speed;
-
-
-
     private Rigidbody2D rb;
-    private Vector2 moveVelocity;
-
-    public float RotSpeed;
-
-    private Vector2 currentDirection = new Vector3(1.0f, 0.0f, 0.0f);
+    private AudioClip soundStep;
+    private Vector2 moveInput;
+    private Vector2 currentDirection;
     private Transform transformObject;
-
     private Animator anim;
+    private Weapon weapon;
+    private float currentSpeed;
 
-    public bool rezK, rezP, rezR, rezS, reload;
-    public bool Rifle = false;
-    public bool Shotgun = false;
+    public float speedDeceleration;
+    public float speed;
+    public float speedIncrease;
+    public float speedRotate;
 
     public GameObject Walking;
     public GameObject AttackM;
@@ -29,209 +25,138 @@ public class PlayerController : MonoBehaviour
     [SerializeField]
     GameObject Attack;
 
-    void Start ()
+    void Start()
     {
         rb = GetComponent<Rigidbody2D>();
         anim = GetComponent<Animator>();
-        
-        transformObject = this.transform;
+        weapon = GetComponent<Weapon>();
+        soundStep = Resources.Load<AudioClip>("Sounds/Player/soundStep");
+
+        transformObject = transform;
+        currentDirection = new Vector3(1.0f, 0.0f, 0.0f);
+        currentSpeed = speed;
         Attack.SetActive(false);
-        
     }
 
-    
-    
     void Update()
     {
-        
-
-        Vector2 moveInput = new Vector2(Input.GetAxisRaw("Horizontal"), Input.GetAxisRaw("Vertical"));
-        moveVelocity = moveInput.normalized * speed;
-
-        if (Input.GetKeyDown(KeyCode.LeftControl))
+        if (Input.GetKeyDown(KeyCode.Alpha1))
         {
-            Vector2 moveInput1 = new Vector2(Input.GetAxisRaw("Horizontal"), Input.GetAxisRaw("Vertical"));
-            speed /= 2;
-            moveVelocity = moveInput1.normalized * speed;
+            SwitchWeapon(EquipWeapon.Knife);
+            weapon.ammoCount.text = " ";
         }
-        if (Input.GetKeyUp(KeyCode.LeftControl))
+        else if (Input.GetKeyDown(KeyCode.Alpha2))
         {
-            Vector2 moveInput1 = new Vector2(Input.GetAxisRaw("Horizontal"), Input.GetAxisRaw("Vertical"));
-            speed *= 2;
-            moveVelocity = moveInput1.normalized * speed;
+            SwitchWeapon(EquipWeapon.Pistol);
         }
-
-        if (Input.GetKeyDown(KeyCode.LeftShift))
+        else if (Input.GetKeyDown(KeyCode.Alpha3) && weapon.hasRifle)
         {
-            Vector2 moveInput1 = new Vector2(Input.GetAxisRaw("Horizontal"), Input.GetAxisRaw("Vertical"));
-            speed *= 2;
-            moveVelocity = moveInput1.normalized * speed;
+            SwitchWeapon(EquipWeapon.Shotgun);
         }
-        if (Input.GetKeyUp(KeyCode.LeftShift))
+        else if (Input.GetKeyDown(KeyCode.Alpha4) && weapon.hasShotgun)
         {
-            Vector2 moveInput1 = new Vector2(Input.GetAxisRaw("Horizontal"), Input.GetAxisRaw("Vertical"));
-            speed /= 2;
-            moveVelocity = moveInput1.normalized * speed;
+            SwitchWeapon(EquipWeapon.Rifle);
         }
-
-        Vector2 mousePos = Camera.main.ScreenToWorldPoint(Input.mousePosition);
-        Vector2 objectPos = transformObject.position;
-
-        Vector2 direction = mousePos - objectPos;
-        direction.Normalize();
-
-        currentDirection = Vector2.Lerp(currentDirection, direction, Time.deltaTime * RotSpeed);
-        transformObject.up = currentDirection;    
-
+        else if (Input.GetKeyDown(KeyCode.R))
+        {
+            anim.SetInteger("Reload"
+                , (int)weapon.Reload(weapon.inHand));
+        }
+        weapon.Shot(CheckReadyShot(), CalculateAngleBullet());
+        weapon.ammoCount.text = weapon.CurrentAmmo + " / " + weapon.AllAmmo;
     }
-
-    void FixedUpdate()
+    private void FixedUpdate()
     {
-        
-        rb.MovePosition(rb.position + moveVelocity * Time.fixedDeltaTime);
-       
-        var moveInput = Input.GetAxisRaw("Horizontal") + Input.GetAxisRaw("Vertical");
-      
-        if (Input.GetKey(KeyCode.G))
-        {
-            
-            anim.SetBool("Attack", true);
-            anim.SetBool("AttackP", true);
-            anim.SetBool("AttackR", true);
-            anim.SetBool("AttackS", true);
-            
-            StartCoroutine(DoAttack());
-        }
-        else
-        {
-            anim.SetBool("Attack", false);
-            anim.SetBool("AttackP", false);
-            anim.SetBool("AttackR", false);
-            anim.SetBool("AttackS", false);
-        }
-        if (Input.GetKeyDown(KeyCode.Alpha1)) 
-        {
-            anim.SetBool("Pistol", false);
-            rezP = false;
-            anim.SetBool("Rifle", false);
-            rezP = false;
-            anim.SetBool("Shotgun", false);
-            rezP = false;
-            anim.SetBool("Knife", true);
-            rezK = true; 
-        }
-        
-        if (Input.GetKeyDown(KeyCode.Alpha2))
-        {
-            
-            anim.SetBool("Rifle", false);
-            rezP = false;
-            anim.SetBool("Shotgun", false);
-            rezP = false;
-            anim.SetBool("Knife", false);
-            rezK = false;
-            anim.SetBool("Pistol", true);
-            rezP = true;  
-        }
-        if (Input.GetKeyDown(KeyCode.Alpha3) && Rifle == true)
-        {
-
-            
-            anim.SetBool("Shotgun", false);
-            rezP = false;
-            anim.SetBool("Knife", false);
-            rezK = false;
-            anim.SetBool("Pistol", false);
-            rezP = true;
-            anim.SetBool("Rifle", true);
-            rezP = true;
-        }
-        if (Input.GetKeyDown(KeyCode.Alpha4) && Shotgun == true)
-        {
-
-            anim.SetBool("Rifle", false);
-            rezP = false;
-            anim.SetBool("Knife", false);
-            rezK = false;
-            anim.SetBool("Pistol", false);
-            rezP = false;
-            anim.SetBool("Shotgun", true);
-            rezP = true;
-        }
-
-
-        if (moveInput != 0)
-        {
-            //Instantiate(Walking, transformObject.position, Quaternion.identity);
-            if (rezK == true)
-            {
-                anim.SetBool("Running", true);
-            }
-            else
-            {
-                anim.SetBool("Running", false);
-            }
-            if (rezP == true)
-            {
-                anim.SetBool("RunningP", true);
-            }
-            else
-            {
-                anim.SetBool("RunningP", false);
-            }
-            if (rezR == true)
-            {
-                anim.SetBool("RunningR", true);
-            }
-            else
-            {
-                anim.SetBool("RunningR", false);
-            }
-            if (rezS == true)
-            {
-                anim.SetBool("RunningS", true);
-            }
-            else
-            {
-                anim.SetBool("RunningS", false);
-            }
-        }
+        SpeedDeceleration();
+        SpeedIncrease();
+        LookAtCursor();
+        moveInput = new Vector2(Input.GetAxisRaw("Horizontal"), Input.GetAxisRaw("Vertical"));
+        rb.MovePosition(rb.position + moveInput * currentSpeed * Time.fixedDeltaTime);
     }
     private void OnTriggerEnter2D(Collider2D collision)
     {
-        if(collision.GetComponent<Rifle>())
+        if (collision.CompareTag("Rifle"))
         {
-            Rifle = true;
-            Destroy(collision.gameObject);
+            weapon.hasRifle = true;
         }
-        if (collision.GetComponent<Shotgun>())
+        if (collision.CompareTag("Shotgun"))
         {
-            Shotgun = true;
-            Destroy(collision.gameObject);
+            weapon.hasShotgun = true;
         }
-        if (collision.GetComponent<Object>())
-        {
-            Destroy(collision.gameObject);
-        }
+        //if (collision.CompareTag("PistolAmmo"))
+        //{
+        //    allAmmoP += 10;
+        //}
+        //if (collision.CompareTag("RifleAmmo"))
+        //{
+        //    allAmmoR += 20;
+        //}
+        //if (collision.CompareTag("ShotgunAmmo"))
+        //{
+        //    allAmmoS += 15;
+        //}
+    }
+    private bool CheckReadyShot()
+    {
+        if (anim.GetInteger("Reload") == 0)
+            return true;
+        else
+            return false;
+    }
+    private float CalculateAngleBullet()
+    {
+        float angle = 2f;
+        if(moveInput == Vector2.zero)
+            return angle;
+        else
+            return angle * currentSpeed;
     }
 
-    IEnumerator DoAttack()
+    private void SwitchWeapon(EquipWeapon currentWeapon)
+    {
+        weapon.inHand = currentWeapon;
+        anim.SetInteger("Weapon", (int)currentWeapon);
+    }
+
+    private IEnumerator DoAttack()
     {
         Attack.SetActive(true);
         yield return new WaitForSeconds(0.5f);
-        
+
         Attack.SetActive(false);
-
     }
-
-    public void EventMove()
+    private void SpeedIncrease()
     {
-        Destroy(Instantiate(Walking, transformObject.position, Quaternion.identity), 1.8f);
+        if (Input.GetKeyDown(KeyCode.LeftShift))
+        {
+            currentSpeed = speedIncrease;
+        }
+        if (Input.GetKeyUp(KeyCode.LeftShift))
+        {
+            currentSpeed = speed;
+        }
     }
-    public void EventAttackM()
+    private void SpeedDeceleration()
     {
-        Destroy(Instantiate(AttackM, transformObject.position, Quaternion.identity), 0.4f);
+        if (Input.GetKeyDown(KeyCode.LeftControl))
+        {
+            currentSpeed = speedDeceleration;
+        }
+        if (Input.GetKeyUp(KeyCode.LeftControl))
+        {
+            currentSpeed = speed;
+        }
     }
+    private void LookAtCursor()
+    {
+        Vector2 mousePos = Camera.main.ScreenToWorldPoint(Input.mousePosition);
+        Vector2 direction = (mousePos - (Vector2)transform.position).normalized;
 
-
+        currentDirection = Vector2.Lerp(currentDirection, direction, Time.fixedDeltaTime * speedRotate);
+        transformObject.up = currentDirection;
+    }
+    public void EventEndReload()
+    {
+        anim.SetInteger("Reload", 0);
+    }
 }

@@ -58,7 +58,7 @@ AnimationClip:
     - time: 1.5
       value: {fileID: 21300000, guid: 202db302c02893b42b9db55cddefad45, type: 3}
     attribute: m_Sprite
-    path: 
+    path: Sprite
     classID: 212
     script: {fileID: 0}
   m_SampleRate: 60
@@ -69,7 +69,7 @@ AnimationClip:
   m_ClipBindingConstant:
     genericBindings:
     - serializedVersion: 2
-      path: 0
+      path: 850496168
       attribute: 0
       script: {fileID: 0}
       typeID: 212
@@ -121,7 +121,14 @@ AnimationClip:
   m_HasMotionFloatCurves: 0
   m_Events:
   - time: 0
-    functionName: EventReloadS
+    functionName: EventSoundReload
+    data: 
+    objectReferenceParameter: {fileID: 0}
+    floatParameter: 0
+    intParameter: 0
+    messageOptions: 0
+  - time: 1.5
+    functionName: EventEndReload
     data: 
     objectReferenceParameter: {fileID: 0}
     floatParameter: 0

@@ -3,7 +3,13 @@
 --- !u!78 &1
 TagManager:
   serializedVersion: 2
-  tags: [Lever, Lamp, Enemy, Projectile]
+  tags:
+  - Lever
+  - Lamp
+  - Enemy
+  - Projectile
+  - Bullet
+  - Box
   layers:
   - Default
   - TransparentFX
