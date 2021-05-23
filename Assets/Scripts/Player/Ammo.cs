@@ -11,20 +11,19 @@ public class Ammo : MonoBehaviour
     {
         transform.Translate(Vector2.up * speed * Time.deltaTime);
     }
-
-    private void OnTriggerEnter2D(Collider2D collision)
+    private void OnCollisionEnter2D(Collision2D collision)
     {
-        if(collision.CompareTag("Enemy"))
+        if (collision.gameObject.CompareTag("Enemy"))
         {
             collision.gameObject.GetComponent<AI>().Health -= damage;
         }
-        if(collision.CompareTag("Box"))
+        if (collision.gameObject.CompareTag("Box"))
         {
-            collision.GetComponent<Box>().TakeDamage();
+            collision.gameObject.GetComponent<Box>().TakeDamage();
         }
-        if(!collision.CompareTag("Bullet"))
+        if (!collision.gameObject.CompareTag("Bullet"))
         {
             Destroy(gameObject);
-        }   
+        }
     }
 }

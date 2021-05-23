@@ -21,36 +21,36 @@ AnimationClip:
   - curve:
     - time: 0
       value: {fileID: 21300000, guid: f10cce59062804642aa8cf2cf42f7f58, type: 3}
-    - time: 0.083333336
+    - time: 0.05
       value: {fileID: 21300000, guid: e39e0f18e87beb241b42be226715f87d, type: 3}
-    - time: 0.16666667
+    - time: 0.1
       value: {fileID: 21300000, guid: 38ac3e6e9cf8d2c4d95f57bfb58ecfcd, type: 3}
-    - time: 0.25
+    - time: 0.15
       value: {fileID: 21300000, guid: c3aaba3c1421e5f42804a74cb708813e, type: 3}
-    - time: 0.33333334
+    - time: 0.18333334
       value: {fileID: 21300000, guid: 2e0f25eddf79e0e46954a0b2db010204, type: 3}
-    - time: 0.41666666
+    - time: 0.23333333
       value: {fileID: 21300000, guid: 5dd1c68b338e8ee4cbf8817d9f5604bd, type: 3}
-    - time: 0.5
+    - time: 0.28333333
       value: {fileID: 21300000, guid: dcef099940eb1c8408c93a6ebcac919d, type: 3}
-    - time: 0.5833333
+    - time: 0.33333334
       value: {fileID: 21300000, guid: 94aca02e110587c42a6985ad2ba21b7e, type: 3}
-    - time: 0.6666667
+    - time: 0.38333333
       value: {fileID: 21300000, guid: 28c8c672619cda44a999d082f3941101, type: 3}
-    - time: 0.75
+    - time: 0.43333334
       value: {fileID: 21300000, guid: f315084ac412995458569e41922594c3, type: 3}
-    - time: 0.8333333
+    - time: 0.48333332
       value: {fileID: 21300000, guid: 98c803d2e50cd0048b536b5461422c3f, type: 3}
-    - time: 0.9166667
+    - time: 0.51666665
       value: {fileID: 21300000, guid: 222967847c1ba6c4eb0c0f0f2b82913a, type: 3}
-    - time: 1
+    - time: 0.56666666
       value: {fileID: 21300000, guid: 6c8ee15bb9428cc4fa2cf3b6d9ba07a1, type: 3}
-    - time: 1.0833334
+    - time: 0.6166667
       value: {fileID: 21300000, guid: 88e3e9f1b0245ae42abf0286b8eee1a1, type: 3}
-    - time: 1.1666666
+    - time: 0.6666667
       value: {fileID: 21300000, guid: 409618fd825598642957c07a7646d5cf, type: 3}
     attribute: m_Sprite
-    path: Sprite
+    path: SpriteBody
     classID: 212
     script: {fileID: 0}
   m_SampleRate: 60
@@ -61,7 +61,7 @@ AnimationClip:
   m_ClipBindingConstant:
     genericBindings:
     - serializedVersion: 2
-      path: 850496168
+      path: 720291145
       attribute: 0
       script: {fileID: 0}
       typeID: 212
@@ -88,7 +88,7 @@ AnimationClip:
     m_AdditiveReferencePoseClip: {fileID: 0}
     m_AdditiveReferencePoseTime: 0
     m_StartTime: 0
-    m_StopTime: 1.1833333
+    m_StopTime: 0.68333334
     m_OrientationOffsetY: 0
     m_Level: 0
     m_CycleOffset: 0
@@ -109,7 +109,21 @@ AnimationClip:
   m_HasMotionFloatCurves: 0
   m_Events:
   - time: 0
-    functionName: EventAttackM
+    functionName: EventSoundAttack
+    data: 
+    objectReferenceParameter: {fileID: 0}
+    floatParameter: 0
+    intParameter: 0
+    messageOptions: 0
+  - time: 0.5
+    functionName: EventAttackHand
+    data: 
+    objectReferenceParameter: {fileID: 0}
+    floatParameter: 0
+    intParameter: 0
+    messageOptions: 0
+  - time: 0.6666667
+    functionName: EventEndAttack
     data: 
     objectReferenceParameter: {fileID: 0}
     floatParameter: 0

@@ -15,6 +15,7 @@ public class Box : MonoBehaviour
         if (item != null)
             Instantiate(item, transform.position, Quaternion.identity);
         transform.position
-            = new Vector3(transform.position.x, transform.position.y, -0.5f);
+            = new Vector3(transform.position.x
+            , transform.position.y, transform.position.z + 0.1f);
     }
 }

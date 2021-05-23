@@ -50,7 +50,7 @@ public class Zombie : AI
     }
     void Update()
     {
-        if(agent.velocity != Vector3.zero)
+        if (agent.velocity != Vector3.zero)
         {
             RotateAtTarget();
         }

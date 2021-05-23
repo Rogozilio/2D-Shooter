@@ -2,7 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class Player : MonoBehaviour
+public class Player1 : MonoBehaviour
 {
     private Rigidbody2D _rigidBody;
     private bool _isKeyEActive = false;
@@ -32,7 +32,7 @@ public class Player : MonoBehaviour
                 collision.gameObject
                 .GetComponent<Lamp>().ActiveLamp();
             }
-            if (collision.gameObject.tag == "Lever")
+            else if (collision.gameObject.tag == "Lever")
             {
                 collision.gameObject
                     .GetComponent<Lever>().SwitchLever();

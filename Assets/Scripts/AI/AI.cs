@@ -72,13 +72,16 @@ public class AI : MonoBehaviour
             {
                 yield break;
             }
-            Vector3 newPosStandstill 
-                = CheckNextPos(transform.position, -radius, radius);
-            agent.speed = speed;
-            agent.stoppingDistance = 0;
-            agent.SetDestination(newPosStandstill);
-            animator.SetInteger("Enemy", 1);
-            animator.speed = agent.speed / baseSpeed;
+            if(Vector3.Distance(target.transform.position, transform.position) < 25)
+            {
+                Vector3 newPosStandstill 
+                    = CheckNextPos(transform.position, radius);
+                agent.speed = speed;
+                agent.stoppingDistance = 0;
+                agent.SetDestination(newPosStandstill);
+                animator.SetInteger("Enemy", 1);
+                animator.speed = agent.speed / baseSpeed;
+            }
             yield return new WaitUntil(()
                 => agent.velocity == Vector3.zero);
             animator.SetInteger("Enemy", 0);
@@ -143,14 +146,19 @@ public class AI : MonoBehaviour
         else
             animator.SetInteger("Enemy", 1);
     }
-    private Vector3 CheckNextPos(Vector3 oldPos, float randomMin, float randomMax)
+    private Vector3 CheckNextPos(Vector3 oldPos, float maxLenghtStep)
     {
-        Vector3 newPos = oldPos + new Vector3(Random.Range(randomMin, randomMax)
-                , Random.Range(randomMin, randomMax)); ;
+        Vector3 newPos = oldPos + new Vector3(Random.Range(0, maxLenghtStep)
+                , Random.Range(0, maxLenghtStep));
         while (!agent.CalculatePath(newPos, agent.path))
         {
-            newPos = oldPos + new Vector3(Random.Range(randomMin, randomMax)
-                , Random.Range(randomMin, randomMax));
+            maxLenghtStep -= 0.01f;
+            newPos = oldPos + new Vector3(Random.Range(0, maxLenghtStep)
+                , Random.Range(0, maxLenghtStep));
+            if(maxLenghtStep <= 0)
+            {
+                return oldPos;
+            }
         }
         return newPos;
     }
@@ -161,7 +169,7 @@ public class AI : MonoBehaviour
             lastVisitPos = target.transform.position;
             agent.stoppingDistance = baseStopDisntance;
             isFindNewPos = true;
-        } 
+        }
         if (isPlayerInSight
             && agent.Raycast(target.transform.position, out _))
         {
@@ -170,7 +178,7 @@ public class AI : MonoBehaviour
         if (!isPlayerInSight
             && isFindNewPos)
         {
-            lastVisitPos = CheckNextPos(lastVisitPos, 0f, 1f);
+            lastVisitPos = CheckNextPos(lastVisitPos, radius);
             agent.stoppingDistance = 0;
             isFindNewPos = false;
         } 
@@ -182,7 +190,7 @@ public class AI : MonoBehaviour
             && !isPlayerInSight)
         {
             isActivePursuit = false;
-            StartCoroutine(RandomStep());
+            //StartCoroutine(RandomStep());
         }
     }
     void OnTriggerStay2D(Collider2D other)

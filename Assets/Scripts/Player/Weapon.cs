@@ -28,6 +28,8 @@ public class Weapon : MonoBehaviour
     public float startTimeR;
     public float startTimeS;
 
+    public float damageKnife;
+
     [SerializeField]
     private int currentAmmoP;
     [SerializeField]
