@@ -3,7 +3,9 @@ using System.Threading;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
+using System;
 
+[Serializable]
 public enum EquipWeapon
 {
     Knife = 1,
@@ -30,33 +32,20 @@ public class Weapon : MonoBehaviour
 
     public float damageKnife;
 
-    [SerializeField]
-    private int currentAmmoP;
-    [SerializeField]
-    private int allAmmoP;
-    [SerializeField]
-    private int fullAmmoP;
+    public int currentAmmoP;
+    public int allAmmoP;
 
-    [SerializeField]
-    private int currentAmmoR;
-    [SerializeField]
-    private int allAmmoR;
-    [SerializeField]
-    private int fullAmmoR;
+    public int currentAmmoR;
+    public int allAmmoR;
 
     [SerializeField]
     private int bulletsPerShot;
-    [SerializeField]
-    private int currentAmmoS;
-    [SerializeField]
-    private int allAmmoS;
-    [SerializeField]
-    private int fullAmmoS;
+    public int currentAmmoS;
+    public int allAmmoS;
 
     public EquipWeapon inHand;
-    public bool hasRifle = true;
-    public bool hasShotgun = true;
 
+    public Image ammoImage;
     public Text ammoCount;
     private float StartTime
     {
@@ -175,7 +164,7 @@ public class Weapon : MonoBehaviour
                 for (int i = BulletsPerShot; i != 0; i--)
                 {
                     Instantiate(bullet, shotDir.position + Vector3.forward
-                            , transform.rotation * Quaternion.AngleAxis(Random.Range(-angle, angle)
+                            , transform.rotation * Quaternion.AngleAxis(UnityEngine.Random.Range(-angle, angle)
                             , transform.forward));
                 }
                 audio.PlayOneShot(SoundShot);

@@ -12,7 +12,7 @@ public class RedBarrelExplosion : MonoBehaviour
     public float ExplosionRadius = 3f;
 
     [ContextMenu("Explosion")]
-    private void Explosion()
+    public void Explosion()
     {
         GetComponent<Animator>().Play("Explosion");
         GetComponent<AudioSource>().Play();
@@ -29,9 +29,10 @@ public class RedBarrelExplosion : MonoBehaviour
                 }
                 if (col.CompareTag("Enemy"))
                 {
-                    //col.GetComponent<AI>().Health -= Damage;
+                    col.GetComponent<AI>().Health -= Damage;
                 }
             }
         }
+        GetComponent<CircleCollider2D>().enabled = false;
     }
 }

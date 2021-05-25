@@ -4,12 +4,13 @@ using UnityEngine;
 
 public class Ammo : MonoBehaviour
 {
+    private Rigidbody2D rigidBody;
     public int damage;
     public float speed;
 
-    void Update()
+    void FixedUpdate()
     {
-        transform.Translate(Vector2.up * speed * Time.deltaTime);
+        GetComponent<Rigidbody2D>().MovePosition(transform.position + transform.up * speed * Time.fixedDeltaTime);
     }
     private void OnCollisionEnter2D(Collision2D collision)
     {
@@ -20,6 +21,10 @@ public class Ammo : MonoBehaviour
         if (collision.gameObject.CompareTag("Box"))
         {
             collision.gameObject.GetComponent<Box>().TakeDamage();
+        }
+        if (collision.gameObject.CompareTag("RedBurrel"))
+        {
+            collision.gameObject.GetComponent<RedBarrelExplosion>().Explosion();
         }
         if (!collision.gameObject.CompareTag("Bullet"))
         {

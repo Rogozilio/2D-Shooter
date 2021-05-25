@@ -208,8 +208,9 @@ public class AI : MonoBehaviour
             }
         }
         //обнаружение игрока
-        if (other.CompareTag("Player")
-            && (!isActivePursuit || !isPlayerInSight))
+        if ((other.CompareTag("Player") || other.CompareTag("Bullet"))
+            && (!isActivePursuit || !isPlayerInSight) 
+            && Vector3.Distance(transform.position, target.transform.position) < 10)
         {
             Ray ray = new Ray(transform.position,
                    other.transform.position - transform.position);

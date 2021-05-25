@@ -70,7 +70,7 @@ SpriteRenderer:
   m_LightmapParameters: {fileID: 0}
   m_SortingLayerID: 0
   m_SortingLayer: 0
-  m_SortingOrder: 0
+  m_SortingOrder: 2
   m_Sprite: {fileID: 21300000, guid: 35468b216dd6f1b43a4a98e560f0ec6d, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
@@ -182,17 +182,13 @@ MonoBehaviour:
   damageKnife: 0
   currentAmmoP: 10
   allAmmoP: 50
-  fullAmmoP: 50
   currentAmmoR: 30
   allAmmoR: 150
-  fullAmmoR: 150
   bulletsPerShot: 5
   currentAmmoS: 6
   allAmmoS: 36
-  fullAmmoS: 36
   inHand: 0
-  hasRifle: 1
-  hasShotgun: 1
+  ammoImage: {fileID: 0}
   ammoCount: {fileID: 0}
 --- !u!114 &403064002392738763
 MonoBehaviour:
@@ -206,12 +202,19 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 4bd41daa7259a2a49ba2262382fca072, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  weapon: {fileID: 0}
   HealthBar: {fileID: 0}
-  health: 0
+  spriteknife: {fileID: 21300000, guid: 722038d4e57dfbb4d87e105b6b1a8946, type: 3}
+  spriteAmmoPistol: {fileID: 21300000, guid: fe48511ec441c12439fe33a66f265c19, type: 3}
+  spriteAmmoShotgun: {fileID: 21300000, guid: bbedec64da7bce347a60fc6c402f7043, type: 3}
+  spriteAmmoRifle: {fileID: 21300000, guid: eaa76c9b6050e87428675895bee0e8d3, type: 3}
+  health: 100
   speedDeceleration: 2
   speed: 4
   speedIncrease: 6
   speedRotate: 8
+  hasRifle: 0
+  hasShotgun: 0
 --- !u!58 &1287520417123683865
 CircleCollider2D:
   m_ObjectHideFlags: 0
@@ -536,7 +539,7 @@ SpriteRenderer:
   m_LightmapParameters: {fileID: 0}
   m_SortingLayerID: 0
   m_SortingLayer: 0
-  m_SortingOrder: 0
+  m_SortingOrder: 2
   m_Sprite: {fileID: 21300000, guid: fd488d5d34b2c9d42abbc03c87469853, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0

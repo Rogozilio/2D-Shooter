@@ -2,9 +2,19 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
+public enum Item
+{
+    health = 0,
+    Shotgun,
+    Rifle,
+    PistolAmmo,
+    ShotgunAmmo,
+    RifleAmmo,
+}
 public class PickUp : MonoBehaviour
 {
     private AudioSource _audio;
+    public Item Item;
     private void Awake()
     {
         _audio = GetComponent<AudioSource>();

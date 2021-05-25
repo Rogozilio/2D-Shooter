@@ -1,3 +1,4 @@
+using System;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
@@ -6,34 +7,53 @@ using UnityEngine.UI;
 public class Player : MonoBehaviour
 {
     private Rigidbody2D rb;
-    private AudioClip soundStep;
+    private AudioSource audio;
+    private AudioClip soundStep1;
+    private AudioClip soundStep2;
+    private AudioClip soundStep3;
+    private AudioClip soundStep4;
+    private AudioClip soundStep5;
     private Vector2 moveInput;
     private Vector2 currentDirection;
     private Transform transformObject;
     private HealthBar healthBar;
     private Animator anim;
-    private Weapon weapon;
+    public Weapon weapon;
     private float currentSpeed;
     private bool isActiveKeyE;
-    
+
     public GameObject HealthBar;
+    public Sprite spriteknife;
+    public Sprite spriteAmmoPistol;
+    public Sprite spriteAmmoShotgun;
+    public Sprite spriteAmmoRifle;
     [SerializeField]
     private float health;
     public float speedDeceleration;
     public float speed;
     public float speedIncrease;
     public float speedRotate;
+    public bool hasRifle;
+    public bool hasShotgun;
 
-    public float Health { get => healthBar.Health; 
-        set => healthBar.Health = value; }
-    void Start()
+    public float Health
+    {
+        get => healthBar.Health;
+        set => healthBar.Health = value;
+    }
+    void Awake()
     {
         rb = GetComponent<Rigidbody2D>();
         anim = GetComponent<Animator>();
+        audio = GetComponent<AudioSource>();
         weapon = GetComponent<Weapon>();
         healthBar = HealthBar.GetComponent<HealthBar>();
-        soundStep = Resources.Load<AudioClip>("Sounds/Player/soundStep");
-        
+        soundStep1 = Resources.Load<AudioClip>("Sounds/Player/soundStep1");
+        soundStep2 = Resources.Load<AudioClip>("Sounds/Player/soundStep2");
+        soundStep3 = Resources.Load<AudioClip>("Sounds/Player/soundStep3");
+        soundStep4 = Resources.Load<AudioClip>("Sounds/Player/soundStep4");
+        soundStep5 = Resources.Load<AudioClip>("Sounds/Player/soundStep5");
+
         Health = health;
         currentSpeed = speed;
         isActiveKeyE = false;
@@ -47,19 +67,22 @@ public class Player : MonoBehaviour
         if (Input.GetKeyDown(KeyCode.Alpha1))
         {
             SwitchWeapon(EquipWeapon.Knife);
-            weapon.ammoCount.text = " ";
+            weapon.ammoImage.sprite = spriteknife;
         }
         else if (Input.GetKeyDown(KeyCode.Alpha2))
         {
             SwitchWeapon(EquipWeapon.Pistol);
+            weapon.ammoImage.sprite = spriteAmmoPistol;
         }
-        else if (Input.GetKeyDown(KeyCode.Alpha3) && weapon.hasRifle)
+        else if (Input.GetKeyDown(KeyCode.Alpha3) && hasRifle)
         {
             SwitchWeapon(EquipWeapon.Shotgun);
+            weapon.ammoImage.sprite = spriteAmmoShotgun;
         }
-        else if (Input.GetKeyDown(KeyCode.Alpha4) && weapon.hasShotgun)
+        else if (Input.GetKeyDown(KeyCode.Alpha4) && hasShotgun)
         {
             SwitchWeapon(EquipWeapon.Rifle);
+            weapon.ammoImage.sprite = spriteAmmoRifle;
         }
         else if (Input.GetKeyDown(KeyCode.R))
         {
@@ -75,7 +98,10 @@ public class Player : MonoBehaviour
             isActiveKeyE = true;
         }
         weapon.Shot(CheckReadyShot(), CalculateAngleBullet());
-        weapon.ammoCount.text = weapon.CurrentAmmo + " / " + weapon.AllAmmo;
+        if (weapon.inHand == EquipWeapon.Knife)
+            weapon.ammoCount.text = "";
+        else
+            weapon.ammoCount.text = weapon.CurrentAmmo + " / " + weapon.AllAmmo;
     }
     private void FixedUpdate()
     {
@@ -87,26 +113,31 @@ public class Player : MonoBehaviour
     }
     private void OnTriggerEnter2D(Collider2D collision)
     {
-        if (collision.CompareTag("Rifle"))
+        if (collision.CompareTag("PickUp"))
         {
-            weapon.hasRifle = true;
+            Item item = collision.GetComponent<PickUp>().Item;
+            switch(item)
+            {
+                case Item.health:
+                Health += 75f;
+                break;
+                case Item.Shotgun:
+                hasShotgun = true;
+                break;
+                case Item.Rifle:
+                hasRifle = true;
+                break;
+                case Item.PistolAmmo:
+                weapon.allAmmoP += 20;
+                break;
+                case Item.ShotgunAmmo:
+                weapon.allAmmoS += 12;
+                break;
+                case Item.RifleAmmo:
+                weapon.allAmmoR += 30;
+                break;
+            }
         }
-        if (collision.CompareTag("Shotgun"))
-        {
-            weapon.hasShotgun = true;
-        }
-        //if (collision.CompareTag("PistolAmmo"))
-        //{
-        //    allAmmoP += 10;
-        //}
-        //if (collision.CompareTag("RifleAmmo"))
-        //{
-        //    allAmmoR += 20;
-        //}
-        //if (collision.CompareTag("ShotgunAmmo"))
-        //{
-        //    allAmmoS += 15;
-        //}
     }
     private void OnTriggerStay2D(Collider2D collision)
     {
@@ -150,12 +181,12 @@ public class Player : MonoBehaviour
 
     private void CalculateAnimFeet()
     {
-        if(moveInput == Vector2.zero)
+        if (moveInput == Vector2.zero)
         {
             anim.SetInteger("Feet", 0);
             return;
         }
-        
+
         float angle = Vector2.Angle(moveInput, transform.up);
 
         if (angle < 45)
@@ -166,7 +197,7 @@ public class Player : MonoBehaviour
         {
             anim.SetInteger("Feet", 2);
         }
-        else if(moveInput.x < 0)
+        else if (moveInput.x < 0)
         {
             anim.SetInteger("Feet", 3);
         }
@@ -238,5 +269,18 @@ public class Player : MonoBehaviour
     public void EventEndAttack()
     {
         anim.SetBool("Attack", false);
+    }
+    public void EventSoundStep()
+    {
+        AudioClip soundStep = null;
+        switch(UnityEngine.Random.Range(0, 5))
+        {
+            case 0: soundStep = soundStep1; break;
+            case 1: soundStep = soundStep2; break;
+            case 2: soundStep = soundStep3; break;
+            case 3: soundStep = soundStep4; break;
+            case 4: soundStep = soundStep5; break;
+        }
+        audio.PlayOneShot(soundStep);
     }
 }

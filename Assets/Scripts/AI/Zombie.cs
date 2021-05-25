@@ -8,7 +8,7 @@ public class Zombie : AI
     {
         baseStopDisntance
             = (GetComponent<CircleCollider2D>().radius 
-            + target.GetComponent<CircleCollider2D>().radius) * 2;
+            + target.GetComponent<CircleCollider2D>().radius);
 
         soundEnemy      = Resources.Load<AudioClip>("Sounds/AI/Zombie/soundZombie");
         soundAttack     = Resources.Load<AudioClip>("Sounds/AI/Zombie/soundAttack");
@@ -19,7 +19,7 @@ public class Zombie : AI
     }
     private void Attack()
     {
-        if(agent.remainingDistance <= 0.7
+        if(agent.remainingDistance <= baseStopDisntance
             && isActivePursuit && isPlayerInSight)
         {
             animator.SetInteger("Enemy", 2);

@@ -53,6 +53,10 @@ public class Boomchik : AI
                 {
                     col.GetComponent<AI>().Health -= Damage;
                 }
+                if(col.CompareTag("Box"))
+                {
+                    col.GetComponent<Box>().TakeDamage();
+                }
             }
         }
         Dead();
@@ -67,6 +71,7 @@ public class Boomchik : AI
             if (!audio.isPlaying)
                 audio.enabled = false;
             GetComponent<BoxCollider2D>().enabled = false;
+            GetComponent<NavMeshAgent>().enabled = false;
             enabled = false;
         }
     }
@@ -85,6 +90,10 @@ public class Boomchik : AI
                 PlaySound(soundEnemy, true);
             MoveToTarget();
             Attack();
+        }
+        if (Health <= 0)
+        {
+            EventAttack();
         }
         DrawPath();
     }
