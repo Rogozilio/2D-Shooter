@@ -67,6 +67,6 @@ public class Spitter : AI
             Attack();
         }
         Dead();
-        DrawPath();
+        //DrawPath();
     }
 }

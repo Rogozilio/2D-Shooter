@@ -10,6 +10,9 @@ TagManager:
   - Projectile
   - Bullet
   - Box
+  - PickUp
+  - RedBurrel
+  - Blood
   layers:
   - Default
   - TransparentFX

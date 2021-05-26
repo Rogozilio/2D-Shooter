@@ -23,10 +23,10 @@ public class AI : MonoBehaviour
     public bool IsActivePursuit { get => isActivePursuit; }
     public bool IsPlayerInSight { get => isPlayerInSight; }
 
-    [Range(0, 1000)]
     public float Health;
     [Range(0, 100)]
     public float Damage;
+    public float DistanceDetected = 10;
 
     [HideInInspector]
     public bool isActiveRandomStep;
@@ -210,7 +210,7 @@ public class AI : MonoBehaviour
         //обнаружение игрока
         if ((other.CompareTag("Player") || other.CompareTag("Bullet"))
             && (!isActivePursuit || !isPlayerInSight) 
-            && Vector3.Distance(transform.position, target.transform.position) < 10)
+            && Vector3.Distance(transform.position, target.transform.position) < DistanceDetected)
         {
             Ray ray = new Ray(transform.position,
                    other.transform.position - transform.position);

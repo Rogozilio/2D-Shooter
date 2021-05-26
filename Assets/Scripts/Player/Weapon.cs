@@ -21,6 +21,7 @@ public class Weapon : MonoBehaviour
     private AudioClip soundShotShotgun;
     private AudioClip soundShotRifle;
     private AudioClip soundReload;
+    private AudioClip soundEmptyWeapon;
 
     private GameObject bullet;
     public Transform shotDir;
@@ -152,11 +153,18 @@ public class Weapon : MonoBehaviour
         soundShotShotgun = Resources.Load<AudioClip>("Sounds/Player/soundShotShotgun");
         soundShotRifle = Resources.Load<AudioClip>("Sounds/Player/soundShotRifle");
         soundReload = Resources.Load<AudioClip>("Sounds/Player/soundReload");
+        soundEmptyWeapon = Resources.Load<AudioClip>("Sounds/Player/soundEmptyWeapon");
     }
     public void Shot(bool isReadyShot, float angle)
     {
         if (timeShot <= 0)
         {
+            if(Input.GetMouseButtonDown(0)
+                && CurrentAmmo <= 0
+                && inHand != EquipWeapon.Knife)
+            {
+                audio.PlayOneShot(soundEmptyWeapon);
+            }
             if (LeftMouseButton
                 && CurrentAmmo > 0
                 && isReadyShot)

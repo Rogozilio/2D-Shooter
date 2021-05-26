@@ -95,6 +95,6 @@ public class Boomchik : AI
         {
             EventAttack();
         }
-        DrawPath();
+        //DrawPath();
     }
 }

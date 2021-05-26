@@ -63,6 +63,6 @@ public class Zombie : AI
             Attack();
         }
         Dead();
-        DrawPath();
+        //DrawPath();
     }
 }

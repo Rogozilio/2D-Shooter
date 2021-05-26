@@ -7,7 +7,7 @@ public class RedBarrelExplosion : MonoBehaviour
     [Range(1f, 100f)]
     public float Health = 1f;
     [Range(1f, 100f)]
-    public float Damage = 40f;
+    public float Damage = 50f;
     [Range(1f, 10f)]
     public float ExplosionRadius = 3f;
 
@@ -29,7 +29,7 @@ public class RedBarrelExplosion : MonoBehaviour
                 }
                 if (col.CompareTag("Enemy"))
                 {
-                    col.GetComponent<AI>().Health -= Damage;
+                    col.GetComponent<AI>().Health -= Damage * 2;
                 }
             }
         }

@@ -20,6 +20,7 @@ public class AttackHand : MonoBehaviour
         if (col.CompareTag("Enemy"))
         {
             col.GetComponent<AI>().Health -= damage;
+            Blood.CreateBlood(transform.position);
         }
         if (col.CompareTag("Box"))
         {

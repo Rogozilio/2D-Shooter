@@ -48,12 +48,14 @@ public class Lamp : MonoBehaviour
     }
     private void OnTriggerEnter2D(Collider2D other)
     {
-        if(!_isActiveLight)
+        if(!_isActiveLight
+            && other.CompareTag("Player"))
             _animator.SetInteger("Lamp", 1);    
     }
-    private void OnTriggerExit2D(Collider2D collision)
+    private void OnTriggerExit2D(Collider2D other)
     {
-        if (!_isActiveLight)
+        if (!_isActiveLight
+            && other.CompareTag("Player"))
             _animator.SetInteger("Lamp", 0);
     }
 }

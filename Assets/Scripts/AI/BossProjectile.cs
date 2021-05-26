@@ -55,7 +55,8 @@ public class BossProjectile : MonoBehaviour
             other.GetComponent<AI>().Health -= _damage * 0.2f;
         }
         if (!other.CompareTag("Projectile")
-            && other.name != ("DetectionZone"))
+            && other.name != ("DetectionZone")
+            && other.name != ("Boss"))
         {
             Destroy(gameObject);
         }

@@ -4,14 +4,13 @@ using UnityEngine;
 
 public enum BossStage
 {
+    Peaceful = 0,
     First = 1,
     Second,
     Third
 };
 public class Boss : AI
 {
-    
-    private BossStage _bossStage;
     private Transform _spawner1;
     private Transform _spawner2;
     private Transform _spawner3;
@@ -20,18 +19,25 @@ public class Boss : AI
     private AudioClip _soundAttack2;
     private AudioClip _soundAttack3;
     private AudioClip _soundSpawnMonster;
-    private float     _maxHealth;
-    private float     _currentPushForce;
-    private bool      _isPuchedBoss;
+    private Vector3 _currentDirPush;
+    private float _maxHealth;
+    private float _currentPushForce;
+    private bool _isPuchedBoss;
 
+    public BossStage BossStage;
     [Space]
     [Header("First Stage")]
+    public GameObject Light;
+    public GameObject Light1;
+    public GameObject Light2;
     [Range(5, 20)]
     public float TimeSpawnEnemy;
     public GameObject[] FirstEnemy;
 
     [Space]
     [Header("Second Stage")]
+    public GameObject Light3;
+    public GameObject Light4;
     public GameObject[] SecondEnemy;
     public GameObject Projectile;
     [Range(1, 10)]
@@ -57,31 +63,38 @@ public class Boss : AI
 
 
         _maxHealth = Health;
-        _bossStage = BossStage.First;
         _currentPushForce = PushForce;
-        StartCoroutine(SpawnMonster());
     }
     private IEnumerator SpawnMonster()
     {
-        while(true)
+        while (true)
         {
-            if(_bossStage != BossStage.Third)
+            if (BossStage != BossStage.Third
+                && BossStage != BossStage.Peaceful)
             {
                 PlaySound(_soundSpawnMonster);
-                Instantiate(FirstEnemy[Random.Range(0, FirstEnemy.Length)]
+                GameObject enemy1 = Instantiate(FirstEnemy[Random.Range(0, FirstEnemy.Length)]
                     , _spawner1.position, Quaternion.identity); ;
-                Instantiate(FirstEnemy[Random.Range(0, FirstEnemy.Length)]
+                GameObject enemy2 = Instantiate(FirstEnemy[Random.Range(0, FirstEnemy.Length)]
                     , _spawner2.position, Quaternion.identity);
+                enemy1.GetComponentsInChildren<CircleCollider2D>()[1].radius = 100;
+                enemy2.GetComponentsInChildren<CircleCollider2D>()[1].radius = 100;
+                enemy1.GetComponent<AI>().DistanceDetected = 30;
+                enemy2.GetComponent<AI>().DistanceDetected = 30;
             }
-            if(_bossStage == BossStage.Second)
+            if (BossStage == BossStage.Second)
             {
-                Instantiate(SecondEnemy[Random.Range(0, SecondEnemy.Length)]
+                GameObject enemy3 = Instantiate(SecondEnemy[Random.Range(0, SecondEnemy.Length)]
                     , _spawner3.position, Quaternion.identity);
-                Instantiate(SecondEnemy[Random.Range(0, SecondEnemy.Length)]
+                GameObject enemy4 = Instantiate(SecondEnemy[Random.Range(0, SecondEnemy.Length)]
                     , _spawner4.position, Quaternion.identity);
+                enemy3.GetComponentsInChildren<CircleCollider2D>()[0].radius = 100;
+                enemy4.GetComponentsInChildren<CircleCollider2D>()[0].radius = 100;
+                enemy3.GetComponent<AI>().DistanceDetected = 30;
+                enemy4.GetComponent<AI>().DistanceDetected = 30;
             }
             yield return new WaitForSeconds(TimeSpawnEnemy);
-            if(_bossStage == BossStage.Third)
+            if (BossStage == BossStage.Third)
             {
                 yield break;
             }
@@ -93,11 +106,11 @@ public class Boss : AI
         {
             animator.SetInteger("Boss", 1);
             yield return new WaitForSeconds(0.5f);
-            if(_bossStage == BossStage.Second)
+            if (BossStage == BossStage.Second)
             {
                 animator.SetInteger("Boss", 2);
             }
-            if (_bossStage == BossStage.Third)
+            if (BossStage == BossStage.Third)
                 yield break;
             yield return new WaitForSeconds(3f);
         }
@@ -116,8 +129,9 @@ public class Boss : AI
     }
     private void Attack()
     {
-        if (agent.remainingDistance <= 0.8)
+        if (agent.remainingDistance <= 1.3)
         {
+            _currentDirPush = transform.up;
             animator.SetInteger("Enemy", 2);
         }
     }
@@ -127,7 +141,7 @@ public class Boss : AI
         target.GetComponent<Player>().Health -= Damage;
         PlaySound(_soundAttack3, false, true);
     }
-    
+
     private void EventSoundStep()
     {
         PlaySound(_soundStep);
@@ -147,35 +161,57 @@ public class Boss : AI
             animator.Play("DeadBoss");
         }
     }
+    private void IncludeLamp()
+    {
+        if(BossStage == BossStage.First)
+        {
+            Light.GetComponent<Lamp>().ActiveLamp();
+            Light1.GetComponent<Lamp>().ActiveLamp();
+            Light2.GetComponent<Lamp>().ActiveLamp();
+        }
+        else if (BossStage == BossStage.Second)
+        {
+            Light3.GetComponent<Lamp>().ActiveLamp();
+            Light4.GetComponent<Lamp>().ActiveLamp();
+        }
+    }
     private void Update()
     {
-        if(Health >= _maxHealth*(2f / 3f) 
-            && _bossStage != BossStage.First)
+        if (BossStage == BossStage.Peaceful)
         {
-            _bossStage = BossStage.First;
+            if (Vector3.Distance(target.transform.position
+            , transform.position) < 7)
+            {
+                BossStage = BossStage.First;
+                IncludeLamp();
+                StartCoroutine(SpawnMonster());
+            }
+            else
+                return;
         }
-        else if(Health > _maxHealth * (1f / 3f) 
+        else if (Health > _maxHealth * (1f / 3f)
             && Health < _maxHealth * (2f / 3f)
-            && _bossStage != BossStage.Second)
+            && BossStage != BossStage.Second)
         {
-            _bossStage = BossStage.Second;
+            BossStage = BossStage.Second;
+            IncludeLamp();
             animator.SetInteger("Boss", 1);
             StartCoroutine(AttackOnSecondeStage());
         }
-        else if(Health <= _maxHealth * (1f / 3f)
-            && _bossStage != BossStage.Third)
+        else if (Health <= _maxHealth * (1f / 3f)
+            && BossStage != BossStage.Third)
         {
-            _bossStage = BossStage.Third;
+            BossStage = BossStage.Third;
             animator.SetInteger("Boss", 3);
             GetComponentInChildren<BoxCollider2D>().enabled = true;
             GetComponent<SpriteRenderer>().flipY = false;
-            for(int i = 0; i < 5; i++)
+            for (int i = 0; i < 5; i++)
                 transform.GetChild(0).SetParent(null);
-            transform.position 
+            transform.position
                 = new Vector3(transform.position.x, transform.position.y - 0.8f);
         }
 
-        if(_bossStage == BossStage.Third)
+        if (BossStage == BossStage.Third)
         {
             AnimationMove();
             Attack();
@@ -186,12 +222,12 @@ public class Boss : AI
     }
     private void FixedUpdate()
     {
-        if(_isPuchedBoss
+        if (_isPuchedBoss
             && _currentPushForce > 0)
         {
             _currentPushForce -= 0.05f;
             target.GetComponent<Rigidbody2D>()
-                .AddRelativeForce(transform.up * Time.fixedDeltaTime * _currentPushForce);
+                .AddRelativeForce(_currentDirPush * Time.fixedDeltaTime * _currentPushForce);
         }
         else
         {

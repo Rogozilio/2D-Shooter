@@ -2,6 +2,7 @@ using System;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.SceneManagement;
 using UnityEngine.UI;
 
 public class Player : MonoBehaviour
@@ -22,6 +23,7 @@ public class Player : MonoBehaviour
     private float currentSpeed;
     private bool isActiveKeyE;
 
+    public Image Info;
     public GameObject HealthBar;
     public Sprite spriteknife;
     public Sprite spriteAmmoPistol;
@@ -74,12 +76,12 @@ public class Player : MonoBehaviour
             SwitchWeapon(EquipWeapon.Pistol);
             weapon.ammoImage.sprite = spriteAmmoPistol;
         }
-        else if (Input.GetKeyDown(KeyCode.Alpha3) && hasRifle)
+        else if (Input.GetKeyDown(KeyCode.Alpha3) && hasShotgun)
         {
             SwitchWeapon(EquipWeapon.Shotgun);
             weapon.ammoImage.sprite = spriteAmmoShotgun;
         }
-        else if (Input.GetKeyDown(KeyCode.Alpha4) && hasShotgun)
+        else if (Input.GetKeyDown(KeyCode.Alpha4) && hasRifle)
         {
             SwitchWeapon(EquipWeapon.Rifle);
             weapon.ammoImage.sprite = spriteAmmoRifle;
@@ -93,9 +95,22 @@ public class Player : MonoBehaviour
         {
             anim.SetBool("Attack", true);
         }
+        else if (Input.GetMouseButtonDown(0)
+            && weapon.inHand == EquipWeapon.Knife)
+        {
+            anim.SetBool("Attack", true);
+        }
         if (Input.GetKeyDown(KeyCode.E))
         {
             isActiveKeyE = true;
+        }
+        if (Input.GetKey(KeyCode.Tab))
+        {
+            Info.gameObject.SetActive(true);
+        }
+        else
+        {
+            Info.gameObject.SetActive(false);
         }
         weapon.Shot(CheckReadyShot(), CalculateAngleBullet());
         if (weapon.inHand == EquipWeapon.Knife)
@@ -105,8 +120,8 @@ public class Player : MonoBehaviour
     }
     private void FixedUpdate()
     {
-        SpeedDeceleration();
-        SpeedIncrease();
+        Dead();
+        ChangeSpeed();
         LookAtCursor();
         moveInput = new Vector2(Input.GetAxisRaw("Horizontal"), Input.GetAxisRaw("Vertical"));
         rb.MovePosition(rb.position + moveInput * currentSpeed * Time.fixedDeltaTime);
@@ -116,7 +131,7 @@ public class Player : MonoBehaviour
         if (collision.CompareTag("PickUp"))
         {
             Item item = collision.GetComponent<PickUp>().Item;
-            switch(item)
+            switch (item)
             {
                 case Item.health:
                 Health += 75f;
@@ -146,7 +161,7 @@ public class Player : MonoBehaviour
             if (collision.CompareTag("Lamp"))
             {
                 collision.gameObject
-                .GetComponent<Lamp>().ActiveLamp();
+                    .GetComponent<Lamp>().ActiveLamp();
             }
             else if (collision.CompareTag("Lever"))
             {
@@ -206,24 +221,17 @@ public class Player : MonoBehaviour
             anim.SetInteger("Feet", 4);
         }
     }
-    private void SpeedIncrease()
+    private void ChangeSpeed()
     {
-        if (Input.GetKeyDown(KeyCode.LeftShift))
+        if (Input.GetKey(KeyCode.LeftShift))
         {
             currentSpeed = speedIncrease;
         }
-        if (Input.GetKeyUp(KeyCode.LeftShift))
-        {
-            currentSpeed = speed;
-        }
-    }
-    private void SpeedDeceleration()
-    {
-        if (Input.GetKeyDown(KeyCode.LeftControl))
+        else if (Input.GetMouseButton(1))
         {
             currentSpeed = speedDeceleration;
         }
-        if (Input.GetKeyUp(KeyCode.LeftControl))
+        else
         {
             currentSpeed = speed;
         }
@@ -235,6 +243,23 @@ public class Player : MonoBehaviour
 
         currentDirection = Vector2.Lerp(currentDirection, direction, Time.fixedDeltaTime * speedRotate);
         transformObject.up = currentDirection;
+    }
+    private void Dead()
+    {
+        if (Health <= 0)
+        {
+            SaveLoad saveLoad = new SaveLoad();
+            int numberLevel = 0;
+            Player currentPlayer = this;
+            if (saveLoad.LoadData(ref currentPlayer, ref numberLevel))
+            {
+                SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex);
+            }
+            else
+            {
+                SceneManager.LoadScene(0);
+            }
+        }
     }
     public void EventEndReload()
     {
@@ -254,6 +279,7 @@ public class Player : MonoBehaviour
                 if (col.CompareTag("Enemy"))
                 {
                     col.GetComponent<AI>().Health -= weapon.damageKnife;
+                    Blood.CreateBlood(col.transform.position);
                 }
                 if (col.CompareTag("Box"))
                 {
@@ -273,7 +299,7 @@ public class Player : MonoBehaviour
     public void EventSoundStep()
     {
         AudioClip soundStep = null;
-        switch(UnityEngine.Random.Range(0, 5))
+        switch (UnityEngine.Random.Range(0, 5))
         {
             case 0: soundStep = soundStep1; break;
             case 1: soundStep = soundStep2; break;

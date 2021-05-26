@@ -22,8 +22,17 @@ public class DCamera : MonoBehaviour
     void LateUpdate()
     {
         Vector3 temp = transform.position;
-        temp.x = player.transform.position.x;
-        temp.y = player.transform.position.y;
+        Vector3 mousePos = Camera.main.ScreenToWorldPoint(Input.mousePosition);
+        if (Input.GetMouseButton(1))
+        {
+            temp = player.transform.position + (mousePos - player.transform.position).normalized;
+            temp.z = mousePos.z;
+        }
+        else
+        {
+            temp.x = player.transform.position.x;
+            temp.y = player.transform.position.y;
+        }
         transform.position = temp;
     }
 }
