@@ -1,2 +1,2 @@
 # 2D-Shooter
-[Download](https://disk.yandex.ru/d/pJzqKja2yYJXcw) Build v1.0
+[Download](https://disk.yandex.ru/d/ioank8zqlp60rg) Build v1.1
