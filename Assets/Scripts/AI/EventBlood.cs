@@ -6,6 +6,6 @@ public class EventBlood : MonoBehaviour
 {
     public void EventStopBlood()
     {
-        GetComponent<Animator>().SetInteger("Blood", 0);
+        GetComponent<Animator>().SetInteger("Effect", 0);
     }
 }

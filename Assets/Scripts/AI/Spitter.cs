@@ -37,12 +37,12 @@ public class Spitter : AI
             + Vector3.ClampMagnitude(transform.right, radius);
         GameObject bullet = Instantiate(Projectile, startPosProjectile, transform.rotation);
         bullet.GetComponent<Projectile>().Speed = SpeedProjectile;
-        bullet.GetComponent<Projectile>().Damage = Damage;
+        bullet.GetComponent<Projectile>().Damage = damage;
         PlaySound(soundAttack, false, true);
     }
     private void Dead()
     {
-        if (Health <= 0)
+        if (health <= 0)
         {
             StopAllCoroutines();
             audio.Stop();
@@ -50,6 +50,9 @@ public class Spitter : AI
             if (!audio.isPlaying)
                 audio.enabled = false;
             GetComponent<CircleCollider2D>().enabled = false;
+            Color color = spriteRender.color;
+            color.a = 1;
+            spriteRender.color = color;
             agent.enabled = false;
             enabled = false;
             animator.Play("DeadSpitter");

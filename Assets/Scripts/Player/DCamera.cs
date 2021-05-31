@@ -6,18 +6,9 @@ using UnityEngine.SceneManagement;
 public class DCamera : MonoBehaviour
 {
     private GameObject player;
-    private SaveLoad saveLoad;
     private void Awake()
     {
-        saveLoad = new SaveLoad();
         player = GameObject.FindGameObjectWithTag("Player");
-        int numberLevel = 0;
-        Player currentPlayer = player.GetComponent<Player>();
-        if (saveLoad.LoadData(ref currentPlayer, ref numberLevel)
-            && SceneManager.GetActiveScene().buildIndex != numberLevel)
-        {
-            SceneManager.LoadScene(numberLevel);
-        }
     }
     void LateUpdate()
     {
@@ -25,7 +16,7 @@ public class DCamera : MonoBehaviour
         Vector3 mousePos = Camera.main.ScreenToWorldPoint(Input.mousePosition);
         if (Input.GetMouseButton(1))
         {
-            temp = player.transform.position + (mousePos - player.transform.position).normalized;
+            temp = player.transform.position + (mousePos - player.transform.position).normalized * 3;
             temp.z = mousePos.z;
         }
         else

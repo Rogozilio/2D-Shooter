@@ -38,6 +38,7 @@ public class SaveLoad
         data.allAmmoP = player.weapon.allAmmoP;
         data.allAmmoS = player.weapon.allAmmoS;
         data.allAmmoR = player.weapon.allAmmoR;
+        data.inHand = player.weapon.inHand;
         bf.Serialize(file, data);
         file.Close();
     }
@@ -62,6 +63,7 @@ public class SaveLoad
             player.weapon.allAmmoP = data.allAmmoP;
             player.weapon.allAmmoS = data.allAmmoS;
             player.weapon.allAmmoR = data.allAmmoR;
+            player.weapon.inHand = data.inHand;
             file.Close();
             return true;
         }

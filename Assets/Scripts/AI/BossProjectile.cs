@@ -52,7 +52,7 @@ public class BossProjectile : MonoBehaviour
         }
         if (other.CompareTag("Enemy"))
         {
-            other.GetComponent<AI>().Health -= _damage * 0.2f;
+            other.GetComponent<AI>().health -= _damage * 0.2f;
         }
         if (!other.CompareTag("Projectile")
             && other.name != ("DetectionZone")

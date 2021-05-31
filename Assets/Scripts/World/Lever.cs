@@ -29,12 +29,22 @@ public class Lever : MonoBehaviour
             gameObject.GetComponent<AudioSource>().Play();
         }
     }
-    private void OnTriggerExit2D(Collider2D collision)
+    private void OnTriggerExit2D(Collider2D other)
     {
-        _animator.SetInteger("Lever", 0);
+        if(other.CompareTag("Player"))
+            _animator.SetInteger("Lever", 0);
     }
-    private void OnTriggerStay2D(Collider2D collision)
+    private void OnTriggerStay2D(Collider2D other)
     {
-        _animator.SetInteger("Lever", 1);
+        if (other.CompareTag("Player"))
+        {
+            _animator.SetInteger("Lever", 1);
+            if (other.GetComponent<Player>().isActiveKeyE)
+            {
+                SwitchLever();
+                other.GetComponent<Player>().isActiveKeyE = false;
+            }
+        }
+            
     }
 }

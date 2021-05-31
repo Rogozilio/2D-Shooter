@@ -16,8 +16,8 @@ public class Ammo : MonoBehaviour
     {
         if (collision.gameObject.CompareTag("Enemy"))
         {
-            collision.gameObject.GetComponent<AI>().Health -= damage;
-            Blood.CreateBlood(collision.GetContact(0).point);
+            collision.gameObject.GetComponent<AI>().health -= damage;
+            Effect.Blood(collision.GetContact(0).point);
         }
         if (collision.gameObject.CompareTag("Box"))
         {

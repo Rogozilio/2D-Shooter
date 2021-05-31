@@ -13,6 +13,7 @@ TagManager:
   - PickUp
   - RedBurrel
   - Blood
+  - Sight
   layers:
   - Default
   - TransparentFX
@@ -49,4 +50,7 @@ TagManager:
   m_SortingLayers:
   - name: Default
     uniqueID: 0
+    locked: 0
+  - name: invisible
+    uniqueID: 2523727341
     locked: 0

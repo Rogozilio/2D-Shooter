@@ -27,12 +27,17 @@ public class RedBarrelExplosion : MonoBehaviour
                 {
                     col.GetComponent<Player>().Health -= Damage;
                 }
+
                 if (col.CompareTag("Enemy"))
                 {
-                    col.GetComponent<AI>().Health -= Damage * 2;
+                    col.GetComponent<AI>().health -= Damage * 2;
                 }
             }
         }
+
         GetComponent<CircleCollider2D>().enabled = false;
+        Color color = GetComponent<SpriteRenderer>().color; 
+        color.a = 1;
+        GetComponent<SpriteRenderer>().color = color;
     }
 }

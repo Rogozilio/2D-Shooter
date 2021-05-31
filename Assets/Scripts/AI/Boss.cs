@@ -15,6 +15,7 @@ public class Boss : AI
     private Transform _spawner2;
     private Transform _spawner3;
     private Transform _spawner4;
+    private AudioClip _soundWin;
     private AudioClip _soundStep;
     private AudioClip _soundAttack2;
     private AudioClip _soundAttack3;
@@ -55,14 +56,14 @@ public class Boss : AI
         _spawner2 = GetComponentsInChildren<Transform>()[3];
         _spawner3 = GetComponentsInChildren<Transform>()[4];
         _spawner4 = GetComponentsInChildren<Transform>()[5];
+        _soundWin = Resources.Load<AudioClip>("Sounds/AI/Boss/soundWin");
         _soundStep = Resources.Load<AudioClip>("Sounds/AI/Boss/soundStep");
         _soundAttack2 = Resources.Load<AudioClip>("Sounds/AI/Boss/soundAttack2");
         _soundAttack3 = Resources.Load<AudioClip>("Sounds/AI/Boss/soundAttack3");
         _soundSpawnMonster = Resources.Load<AudioClip>("Sounds/AI/Boss/soundSpawnMonster");
         soundDead = Resources.Load<AudioClip>("Sounds/AI/Boss/soundDead");
 
-
-        _maxHealth = Health;
+        _maxHealth = health;
         _currentPushForce = PushForce;
     }
     private IEnumerator SpawnMonster()
@@ -78,9 +79,11 @@ public class Boss : AI
                 GameObject enemy2 = Instantiate(FirstEnemy[Random.Range(0, FirstEnemy.Length)]
                     , _spawner2.position, Quaternion.identity);
                 enemy1.GetComponentsInChildren<CircleCollider2D>()[1].radius = 100;
+                enemy1.GetComponent<SpriteRenderer>().color += new Color(0, 0, 0, 1);
+                enemy1.GetComponent<AI>().distanceDetected = 30;
                 enemy2.GetComponentsInChildren<CircleCollider2D>()[1].radius = 100;
-                enemy1.GetComponent<AI>().DistanceDetected = 30;
-                enemy2.GetComponent<AI>().DistanceDetected = 30;
+                enemy2.GetComponent<SpriteRenderer>().color += new Color(0, 0, 0, 1);
+                enemy2.GetComponent<AI>().distanceDetected = 30;
             }
             if (BossStage == BossStage.Second)
             {
@@ -89,9 +92,11 @@ public class Boss : AI
                 GameObject enemy4 = Instantiate(SecondEnemy[Random.Range(0, SecondEnemy.Length)]
                     , _spawner4.position, Quaternion.identity);
                 enemy3.GetComponentsInChildren<CircleCollider2D>()[0].radius = 100;
+                enemy3.GetComponent<AI>().distanceDetected = 30;
+                enemy3.GetComponent<SpriteRenderer>().color += new Color(0, 0, 0, 1);
                 enemy4.GetComponentsInChildren<CircleCollider2D>()[0].radius = 100;
-                enemy3.GetComponent<AI>().DistanceDetected = 30;
-                enemy4.GetComponent<AI>().DistanceDetected = 30;
+                enemy4.GetComponent<AI>().distanceDetected = 30;
+                enemy4.GetComponent<SpriteRenderer>().color += new Color(0, 0, 0, 1);
             }
             yield return new WaitForSeconds(TimeSpawnEnemy);
             if (BossStage == BossStage.Third)
@@ -123,7 +128,7 @@ public class Boss : AI
         GameObject bullet = Instantiate(Projectile, startPosProjectile, transform.rotation);
         bullet.GetComponent<BossProjectile>().Speed = SpeedProjectile;
         bullet.GetComponent<BossProjectile>().SpeedRotate = SpeedRotateProjectile;
-        bullet.GetComponent<BossProjectile>().Damage = Damage;
+        bullet.GetComponent<BossProjectile>().Damage = damage;
         bullet.GetComponent<BossProjectile>().Target = target;
         PlaySound(_soundAttack2);
     }
@@ -131,14 +136,14 @@ public class Boss : AI
     {
         if (agent.remainingDistance <= 1.3)
         {
-            _currentDirPush = transform.up;
+            //_currentDirPush = target.transform.position + transform.up;
             animator.SetInteger("Enemy", 2);
         }
     }
     private void EventAttackThirdStage()
     {
         _isPuchedBoss = true;
-        target.GetComponent<Player>().Health -= Damage;
+        target.GetComponent<Player>().Health -= damage;
         PlaySound(_soundAttack3, false, true);
     }
 
@@ -148,17 +153,17 @@ public class Boss : AI
     }
     private void Dead()
     {
-        if (Health <= 0)
+        if (health <= 0)
         {
             StopAllCoroutines();
             audio.Stop();
             PlaySound(soundDead, false, true);
-            if (!audio.isPlaying)
-                audio.enabled = false;
             GetComponent<CircleCollider2D>().enabled = false;
             agent.enabled = false;
             enabled = false;
             animator.Play("DeadBoss");
+            audio.volume = 1f;
+            PlaySound(_soundWin, false, true);
         }
     }
     private void IncludeLamp()
@@ -183,14 +188,15 @@ public class Boss : AI
             , transform.position) < 7)
             {
                 BossStage = BossStage.First;
+                GetComponent<CircleCollider2D>().enabled = true;
                 IncludeLamp();
                 StartCoroutine(SpawnMonster());
             }
             else
                 return;
         }
-        else if (Health > _maxHealth * (1f / 3f)
-            && Health < _maxHealth * (2f / 3f)
+        else if (health > _maxHealth * (1f / 3f)
+            && health < _maxHealth * (2f / 3f)
             && BossStage != BossStage.Second)
         {
             BossStage = BossStage.Second;
@@ -198,7 +204,7 @@ public class Boss : AI
             animator.SetInteger("Boss", 1);
             StartCoroutine(AttackOnSecondeStage());
         }
-        else if (Health <= _maxHealth * (1f / 3f)
+        else if (health <= _maxHealth * (1f / 3f)
             && BossStage != BossStage.Third)
         {
             BossStage = BossStage.Third;
@@ -226,8 +232,8 @@ public class Boss : AI
             && _currentPushForce > 0)
         {
             _currentPushForce -= 0.05f;
-            target.GetComponent<Rigidbody2D>()
-                .AddRelativeForce(_currentDirPush * Time.fixedDeltaTime * _currentPushForce);
+            _currentDirPush = (transform.up).normalized;
+            target.GetComponent<Rigidbody2D>().AddForce(_currentDirPush * (Time.fixedDeltaTime * _currentPushForce));
         }
         else
         {

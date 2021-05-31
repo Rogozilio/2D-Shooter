@@ -30,12 +30,12 @@ public class Zombie : AI
         if (agent.remainingDistance <= agent.stoppingDistance)
         {
             PlaySound(soundAttack, false, true);
-            target.GetComponent<Player>().Health -= Damage;
+            target.GetComponent<Player>().Health -= damage;
         }
     }
     private void Dead()
     {
-        if(Health <= 0)
+        if(health <= 0)
         {
             StopAllCoroutines();
             audio.Stop();
@@ -43,6 +43,9 @@ public class Zombie : AI
             if (!audio.isPlaying)
                 audio.enabled = false;
             GetComponent<CircleCollider2D>().enabled = false;
+            Color color = spriteRender.color;
+            color.a = 1;
+            spriteRender.color = color;
             agent.enabled = false;
             enabled = false;
             animator.Play("DeadZombie");

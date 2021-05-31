@@ -17,5 +17,8 @@ public class Box : MonoBehaviour
         transform.position
             = new Vector3(transform.position.x
             , transform.position.y, transform.position.z + 0.1f);
+        Color color = GetComponent<SpriteRenderer>().color;
+        color.a = 1;
+        GetComponent<SpriteRenderer>().color = color;
     }
 }

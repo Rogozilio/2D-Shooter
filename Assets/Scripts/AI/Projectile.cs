@@ -1,6 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.SceneManagement;
 
 public class Projectile : MonoBehaviour
 {
@@ -14,24 +15,33 @@ public class Projectile : MonoBehaviour
     private void Start()
     {
         _rigidBody = GetComponent<Rigidbody2D>();
+        if (SceneManager.GetActiveScene().buildIndex > 2)
+        {
+            Color color = GetComponent<SpriteRenderer>().color;
+            color.a = 1f;
+            GetComponent<SpriteRenderer>().color = color;
+            transform.GetChild(0).gameObject.SetActive(true);
+        }
+          
     }
     private void Update()
     {
         _rigidBody.velocity = transform.right * _speed;
     }
-    private void OnTriggerEnter2D(Collider2D other)
+    private void OnCollisionEnter2D(Collision2D other)
     {
-        if(other.CompareTag("Player"))
+        if(other.gameObject.CompareTag("Player"))
         {
-            other.GetComponent<Player>().Health -= _damage;
+            other.gameObject.GetComponent<Player>().Health -= _damage;
         }
-        if (other.CompareTag("Enemy"))
+        if (other.gameObject.CompareTag("Enemy"))
         {
-            other.GetComponent<AI>().Health -= _damage * 0.2f;
+            other.gameObject.GetComponent<AI>().health -= _damage * 0.2f;
         }
-        if (!other.CompareTag("Projectile")
-            && other.name != ("DetectionZone"))
+        if (!other.gameObject.CompareTag("Projectile")
+            && other.gameObject.name != ("DetectionZone"))
         {
+            Effect.Projectile((other.GetContact(0).point));
             Destroy(gameObject);
         }
     }

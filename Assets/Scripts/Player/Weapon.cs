@@ -72,7 +72,7 @@ public class Weapon : MonoBehaviour
                 return soundShotRifle;
         }
     }
-    private bool LeftMouseButton
+    public bool LeftMouseButton
     {
         get
         {
@@ -155,15 +155,16 @@ public class Weapon : MonoBehaviour
         soundReload = Resources.Load<AudioClip>("Sounds/Player/soundReload");
         soundEmptyWeapon = Resources.Load<AudioClip>("Sounds/Player/soundEmptyWeapon");
     }
-    public void Shot(bool isReadyShot, float angle)
+    public bool Shot(bool isReadyShot, float angle)
     {
         if (timeShot <= 0)
         {
-            if(Input.GetMouseButtonDown(0)
+            if(LeftMouseButton
                 && CurrentAmmo <= 0
                 && inHand != EquipWeapon.Knife)
             {
                 audio.PlayOneShot(soundEmptyWeapon);
+                timeShot = StartTime;
             }
             if (LeftMouseButton
                 && CurrentAmmo > 0
@@ -178,12 +179,15 @@ public class Weapon : MonoBehaviour
                 audio.PlayOneShot(SoundShot);
                 timeShot = StartTime;
                 CurrentAmmo -= 1;
+                return true;
             }
         }
         else
         {
             timeShot -= Time.deltaTime;
+            return false;
         }
+        return false;
     }
     public EquipWeapon Reload(EquipWeapon currentWeapon)
     {

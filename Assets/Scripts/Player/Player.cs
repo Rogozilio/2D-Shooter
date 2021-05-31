@@ -3,6 +3,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.SceneManagement;
+using UnityEngine.Serialization;
 using UnityEngine.UI;
 
 public class Player : MonoBehaviour
@@ -21,9 +22,13 @@ public class Player : MonoBehaviour
     private Animator anim;
     public Weapon weapon;
     private float currentSpeed;
-    private bool isActiveKeyE;
-
-    public Image Info;
+    
+    [HideInInspector]
+    public bool isActiveKeyE;
+    [FormerlySerializedAs("Info")]
+    public Image black;
+    public Image info;
+    [FormerlySerializedAs("HealthBar")]
     public GameObject HealthBar;
     public Sprite spriteknife;
     public Sprite spriteAmmoPistol;
@@ -43,7 +48,8 @@ public class Player : MonoBehaviour
         get => healthBar.Health;
         set => healthBar.Health = value;
     }
-    void Awake()
+
+    private void Awake()
     {
         rb = GetComponent<Rigidbody2D>();
         anim = GetComponent<Animator>();
@@ -57,62 +63,86 @@ public class Player : MonoBehaviour
         soundStep5 = Resources.Load<AudioClip>("Sounds/Player/soundStep5");
 
         Health = health;
+        black.enabled = true;
         currentSpeed = speed;
         isActiveKeyE = false;
         transformObject = transform;
         currentDirection = new Vector3(1.0f, 0.0f, 0.0f);
+        LoadData();
+        SwitchWeapon(weapon.inHand);
+        StartCoroutine(BlinkHealth());
     }
 
-    void Update()
+    private void Update()
     {
         CalculateAnimFeet();
         if (Input.GetKeyDown(KeyCode.Alpha1))
         {
             SwitchWeapon(EquipWeapon.Knife);
-            weapon.ammoImage.sprite = spriteknife;
         }
         else if (Input.GetKeyDown(KeyCode.Alpha2))
         {
             SwitchWeapon(EquipWeapon.Pistol);
-            weapon.ammoImage.sprite = spriteAmmoPistol;
         }
         else if (Input.GetKeyDown(KeyCode.Alpha3) && hasShotgun)
         {
             SwitchWeapon(EquipWeapon.Shotgun);
-            weapon.ammoImage.sprite = spriteAmmoShotgun;
         }
         else if (Input.GetKeyDown(KeyCode.Alpha4) && hasRifle)
         {
             SwitchWeapon(EquipWeapon.Rifle);
-            weapon.ammoImage.sprite = spriteAmmoRifle;
         }
         else if (Input.GetKeyDown(KeyCode.R))
         {
             anim.SetInteger("Reload"
                 , (int)weapon.Reload(weapon.inHand));
         }
-        else if (Input.GetKeyDown(KeyCode.F))
+        else if (Input.GetMouseButtonDown(0) && weapon.inHand == EquipWeapon.Knife
+                 || Input.GetKeyDown(KeyCode.F))
         {
-            anim.SetBool("Attack", true);
+            anim.SetTrigger("Attack");
         }
-        else if (Input.GetMouseButtonDown(0)
-            && weapon.inHand == EquipWeapon.Knife)
-        {
-            anim.SetBool("Attack", true);
-        }
-        if (Input.GetKeyDown(KeyCode.E))
+        if (Input.GetKeyUp(KeyCode.E))
         {
             isActiveKeyE = true;
         }
         if (Input.GetKey(KeyCode.Tab))
         {
-            Info.gameObject.SetActive(true);
+            info.gameObject.SetActive(true);
         }
         else
         {
-            Info.gameObject.SetActive(false);
+            info.gameObject.SetActive(false);
         }
-        weapon.Shot(CheckReadyShot(), CalculateAngleBullet());
+        if (Input.GetKey(KeyCode.Y))
+        {
+            SceneManager.LoadScene(0);
+        }
+        if (Input.GetKey(KeyCode.U))
+        {
+            SceneManager.LoadScene(1);
+        }
+        if (Input.GetKey(KeyCode.I))
+        {
+            SceneManager.LoadScene(2);
+        }
+        if (Input.GetKey(KeyCode.O))
+        {
+            SceneManager.LoadScene(3);
+        }
+        if (Input.GetKey(KeyCode.P))
+        {
+            SceneManager.LoadScene(4);
+        }
+        if (Input.GetKey(KeyCode.L))
+        {
+            SaveLoad saveData = new SaveLoad();
+            saveData.ResetData();
+        }
+        if (weapon.Shot(CheckReadyShot(), CalculateAngleBullet()))
+        {
+            anim.SetTrigger("Shot");
+        }
         if (weapon.inHand == EquipWeapon.Knife)
             weapon.ammoCount.text = "";
         else
@@ -124,13 +154,18 @@ public class Player : MonoBehaviour
         ChangeSpeed();
         LookAtCursor();
         moveInput = new Vector2(Input.GetAxisRaw("Horizontal"), Input.GetAxisRaw("Vertical"));
-        rb.MovePosition(rb.position + moveInput * currentSpeed * Time.fixedDeltaTime);
-    }
-    private void OnTriggerEnter2D(Collider2D collision)
-    {
-        if (collision.CompareTag("PickUp"))
+        float distance = Vector2.Distance(Vector2.zero, moveInput);
+        if (distance > 1)
         {
-            Item item = collision.GetComponent<PickUp>().Item;
+            moveInput = Vector2.Lerp(Vector2.zero, moveInput, 1f / distance);
+        }
+        rb.MovePosition(rb.position + moveInput * (currentSpeed * Time.fixedDeltaTime));
+    }
+    private void OnCollisionEnter2D(Collision2D collision)
+    {
+        if (collision.gameObject.CompareTag("PickUp"))
+        {
+            Item item = collision.gameObject.GetComponent<PickUp>().Item;
             switch (item)
             {
                 case Item.health:
@@ -162,13 +197,30 @@ public class Player : MonoBehaviour
             {
                 collision.gameObject
                     .GetComponent<Lamp>().ActiveLamp();
+                isActiveKeyE = false;
             }
-            else if (collision.CompareTag("Lever"))
-            {
-                collision.gameObject
-                    .GetComponent<Lever>().SwitchLever();
-            }
-            isActiveKeyE = false;
+            // else if (collision.CompareTag("Lever"))
+            // {
+            //     collision.gameObject
+            //         .GetComponent<Lever>().SwitchLever();
+            //     isActiveKeyE = false;
+            // }
+        }
+    }
+    // ReSharper disable Unity.PerformanceAnalysis
+    private IEnumerator BlinkHealth()
+    {
+        while (true)
+        {
+            yield return new WaitWhile(() => Health > 30);
+            float alpha = 0.1f;
+            Color color = healthBar.GetComponentsInChildren<Image>()[3].color;
+            if (color.a > 0)
+                color.a -= alpha;
+            else
+                color.a = 1;
+            healthBar.GetComponentsInChildren<Image>()[3].color = color;
+            yield return new WaitForSeconds(0.05f);
         }
     }
     private bool CheckReadyShot()
@@ -192,6 +244,13 @@ public class Player : MonoBehaviour
     {
         weapon.inHand = currentWeapon;
         anim.SetInteger("Weapon", (int)currentWeapon);
+        switch (currentWeapon)
+        {
+            case EquipWeapon.Knife: weapon.ammoImage.sprite = spriteknife; break;
+            case EquipWeapon.Pistol: weapon.ammoImage.sprite = spriteAmmoPistol; break;
+            case EquipWeapon.Shotgun: weapon.ammoImage.sprite = spriteAmmoShotgun; break;
+            case EquipWeapon.Rifle: weapon.ammoImage.sprite = spriteAmmoRifle;break;
+        }
     }
 
     private void CalculateAnimFeet()
@@ -220,6 +279,15 @@ public class Player : MonoBehaviour
         {
             anim.SetInteger("Feet", 4);
         }
+
+        if (currentSpeed == speedDeceleration)
+        {
+            anim.SetFloat("Speed", 0.3f);
+        }
+        else if(currentSpeed == speed)
+            anim.SetFloat("Speed", 0.7f);
+        else
+            anim.SetFloat("Speed", 1f);
     }
     private void ChangeSpeed()
     {
@@ -248,17 +316,30 @@ public class Player : MonoBehaviour
     {
         if (Health <= 0)
         {
-            SaveLoad saveLoad = new SaveLoad();
-            int numberLevel = 0;
-            Player currentPlayer = this;
-            if (saveLoad.LoadData(ref currentPlayer, ref numberLevel))
-            {
-                SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex);
-            }
-            else
-            {
-                SceneManager.LoadScene(0);
-            }
+            SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex);
+        }
+    }
+    private void LoadData()
+    {
+        StartCoroutine(LoadLevel());
+        SaveLoad saveLoad = new SaveLoad();
+        int currentLevelIndex = SceneManager.GetActiveScene().buildIndex;
+        Player player = this;
+        saveLoad.LoadData(ref player, ref currentLevelIndex);
+        if (currentLevelIndex != SceneManager.GetActiveScene().buildIndex)
+        {
+            SceneManager.LoadScene(currentLevelIndex);
+        }
+    }
+
+    private IEnumerator LoadLevel()
+    {
+        while (black.color.a > 0)
+        {
+            yield return new WaitForFixedUpdate();
+             Color color = black.color;
+             color.a -= 0.01f;
+             black.color = color;
         }
     }
     public void EventEndReload()
@@ -269,17 +350,17 @@ public class Player : MonoBehaviour
     {
         float sizeX = 0.8f;
         float sizeY = 1.4f;
-        Collider2D[] collider2D
+        Collider2D[] cols
            = Physics2D.OverlapBoxAll(transform.position + transform.up * sizeX
            , new Vector2(sizeX, sizeY), 0, ~(1 << 8));
-        if (collider2D != null)
+        if (cols != null)
         {
-            foreach (Collider2D col in collider2D)
+            foreach (Collider2D col in cols)
             {
                 if (col.CompareTag("Enemy"))
                 {
-                    col.GetComponent<AI>().Health -= weapon.damageKnife;
-                    Blood.CreateBlood(col.transform.position);
+                    col.GetComponent<AI>().health -= weapon.damageKnife;
+                    Effect.Blood(col.transform.position);
                 }
                 if (col.CompareTag("Box"))
                 {
@@ -290,11 +371,8 @@ public class Player : MonoBehaviour
     }
     public void EventAttackHand()
     {
-        GetComponentInChildren<AttackHand>(true).gameObject.SetActive(true);
-    }
-    public void EventEndAttack()
-    {
-        anim.SetBool("Attack", false);
+        GetComponentInChildren<AttackHand>(true)
+            .gameObject.GetComponent<BoxCollider2D>().enabled = true;
     }
     public void EventSoundStep()
     {
