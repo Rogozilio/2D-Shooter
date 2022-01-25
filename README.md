@@ -5,3 +5,4 @@
 
 Примеры игровго процесса:
 
+![фыв](https://github.com/Rogozilio/2D-Shooter/blob/master/2d%20shooter%20gameplay-min.gif)
